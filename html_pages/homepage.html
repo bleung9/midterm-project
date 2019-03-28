@@ -4,16 +4,13 @@
     <!-- Meta Information -->
     <title>Pikachoose - Home Page</title>
 
-    <!-- External CSS -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    
-    <!-- App CSS -->
-
-  <meta charset="utf-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+    <script type="text/javascript" src="../public/scripts/app.js"></script>
   </head>
   
   <body>
@@ -26,24 +23,39 @@
     </nav>
   
     <!-- Main Container -->
-    <div class="container-fluid text-center" style="padding-left:400px; padding-right:300;">    
-      <div class="col-sm-8 text-left"> 
+    <main class="container text-left" style="display:flex; align-items: center;justify-content:center; flex-direction: column;">    
+      <section class="col-sm-8 text-left"> 
         <h1>Welcome</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <hr>
-      </div>
+      </section>
 
-        <!-- Poll Details -->
-    <div id="poll" class="col-sm-8 text-left">
+        <!-- Poll Question and User Email -->
+    <section id="poll" class="col-sm-8 text-left">
       <h3>Please Enter Your Question:</h3>
       <textarea id="make-question" style="width:100%; border-radius: 5px;" name="text" placeholder="What question would you like to ask?" style="border-radius: 5px;"></textarea>
       <h3>Please Enter Your Email:</h3>
       <!-- Textarea will need to have email input type when form added -->
       <textarea id="add-email" style="width:100%; border-radius: 5px;" name="text" placeholder="example@example.com" style="border-radius: 5px;"></textarea>
+      <hr>
+
+      <!-- Poll Options -->
       <h3>Please Add Your Poll Options:</h3>
-      <textarea id="add-options" style="width:100%; border-radius: 5px;" name="text" placeholder="What options would you like to include?" style="border-radius: 5px;"></textarea><button type="button" style="background-color: #89C1FF; border: #89C1FF;"class="btn btn-primary">Add Option</button>
-      <button type="button" style="background-color: #89C1FF; border:#89C1FF;"class="btn btn-primary">Submit</button>
-    </div>
-  </div>
+      <div id="poll-options">
+        <div class="form-group">
+          <label for="email">Title:</label>
+          <input type="text" class="form-control" style="border:1px solid black;" placeholder="Enter Title Here" name="title"/>
+        </div>
+          
+        <div class="form-group">
+          <label for="password">Description (Optional):</label>
+          <input type="text" class="form-control" style="border:1px solid black;" placeholder="Enter Optional Description Here" name="description"/>
+        </div>
+        </div>
+        <button type="button" style="background-color: #89C1FF; border: #89C1FF;" class="btn btn-primary" value="Add" id="add">Add option</button>
+      <button type="button" style="background-color: #89C1FF; border:#89C1FF;"class="btn btn-primary" id="submit">Submit</button>
+    </section>
+    </main>
   </body>
+
 </html>
