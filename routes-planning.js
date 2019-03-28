@@ -15,10 +15,6 @@ $.post("/", poll_data).then(() => {
   //call mailgun API
 });
 
-// (3) app.get to /submitted after submission
-app.get("/poll_submitted", function(req, res) {
-  res.render(SUCCESSFUL SUBMISSION PAGE (w/ links to both admin, participation url))
-});
 
 // (4) app.get to /:poll_url (participant/admin url)
 // poll_data is all the information contained in all of the poll form submission fields

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="../public/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
@@ -35,12 +35,12 @@
       </section>
 
           <!-- Poll Question and User Email -->
-      <section id="poll" class="col-sm-8 text-left">
+      <section id="poll" class="col-sm-8 text-left" action="/poll_submitted" method="POST">
         <h3>Please Enter Your Question:</h3>
-        <textarea id="make-question" style="width:100%; border-radius: 5px;" name="text" placeholder="What question would you like to ask?" style="border-radius: 5px;"></textarea>
+        <textarea id="make-question" style="width:100%; border-radius: 5px;" name="question" placeholder="What question would you like to ask?" style="border-radius: 5px;"></textarea>
         <h3>Please Enter Your Email:</h3>
         <!-- Textarea will need to have email input type when form added -->
-        <textarea id="add-email" style="width:100%; border-radius: 5px;" name="text" placeholder="example@example.com" style="border-radius: 5px;"></textarea>
+        <textarea id="add-email" style="width:100%; border-radius: 5px;" name="email" placeholder="example@example.com" style="border-radius: 5px;"></textarea>
         <hr>
 
         <!-- Poll Options -->

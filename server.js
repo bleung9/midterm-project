@@ -43,6 +43,12 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// (3) app.get to /submitted after submission
+app.post("/poll_submitted", function(req, res) {
+  console.log("is this printing?");
+  // res.render(SUCCESSFUL SUBMISSION PAGE (w/ links to both admin, participation url))
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
