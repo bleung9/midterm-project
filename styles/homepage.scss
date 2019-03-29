@@ -1,0 +1,57 @@
+.navbar {
+  height:80px;
+  background-color: #89C1FF;
+  border:5px solid #89C1FF;
+}
+
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+}
+
+#pikachu-logo {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+#homepage-title {
+  line-height: 50px;
+  padding-left: 0.5rem;
+  color:white;
+  font: +6;
+}
+
+.content-container {
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  flex-direction: column;
+}
+
+#poll {}
+
+#make-question {
+  width:100%;
+  border-radius: 5px;
+}
+
+#add-email {
+  width:100%;
+  border-radius: 5px;
+}
+
+.poll-options {}
+
+.form-group {}
+
+.form-control {
+  border:1px solid black;
+}
+
+#two-buttons {
+}
+
+.main-button {
+  background-color: #89C1FF;
+  border: #89C1FF;
+}
