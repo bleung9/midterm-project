@@ -16,7 +16,7 @@ $(document).ready(function() {
   $("#add").click(function(event) {
     event.preventDefault();
     console.log("random hello");
-    $("#two-buttons").prepend( `
+    $("#two-buttons").prev().append( `
       <div class="form-group">
         <label for="email">Title:</label>
         <input type="text" class="form-control" style="border:1px solid black;" placeholder="Enter Title Here" name="title"/>

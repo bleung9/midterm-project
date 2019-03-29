@@ -1,66 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta Information -->
     <title>Pikachoose - Home Page</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../styles/homepage.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+
   </head>
 
   <body>
     <!-- Top nav bar -->
-    <nav class="navbar navbar-inverse" style="height:80px; background-color: #89C1FF; border:5px solid #89C1FF;">
-      <div class="navbar-brand" href="#" style="display: flex; justify-content: center;">
-        <img src="https://i.imgur.com/2rIMflI.png" width="50" height="50" class="d-inline-block align-top" alt="">
-        <p style="line-height: 50px; padding-left: 0.5rem; color:white;"><font size ="+6">Pikachoose</font></p>
+    <nav class="navbar navbar-inverse">
+      <div class="navbar-brand" href="#">
+        <img id='pikachu-logo' src="https://i.imgur.com/2rIMflI.png">
+        <p id="homepage-title">Pikachoose</p>
       </div>
     </nav>
 
     <!-- Main Container -->
-    <main class="container text-left" style="display:flex; align-items: center;justify-content:center; flex-direction: column;">
-      <section class="col-sm-8 text-left">
+    <main class="content-container">
+      <section>
         <h1>Welcome</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <hr>
       </section>
 
-          <!-- Poll Question and User Email -->
-      <section id="poll" class="col-sm-8 text-left" action="/poll_submitted" method="POST">
-        <h3>Please Enter Your Question:</h3>
-        <textarea id="make-question" style="width:100%; border-radius: 5px;" name="question" placeholder="What question would you like to ask?" style="border-radius: 5px;"></textarea>
-        <h3>Please Enter Your Email:</h3>
-        <!-- Textarea will need to have email input type when form added -->
-        <textarea id="add-email" style="width:100%; border-radius: 5px;" name="email" placeholder="example@example.com" style="border-radius: 5px;"></textarea>
-        <hr>
+        <!-- Poll Question and User Email -->
+      <form class="block" action="/poll_submitted" method="POST">
 
-        <!-- Poll Options -->
-        <h3>Please Add Your Poll Options:</h3>
-        <div id="poll-options">
-          <div class="form-group">
-            <label for="title">Title:</label>
-            <input type="text" class="form-control" style="border:1px solid black;" placeholder="Enter Title Here" name="title"/>
+        <section id="poll">
+          <h3>Please Enter Your Question:</h3>
+          <input id="make-question" name="question" placeholder="What question would you like to ask?"></textarea>
+          <h3>Please Enter Your Email:</h3>
+          <!-- Textarea will need to have email input type when form added -->
+          <input id="add-email" name="email" placeholder="example@example.com"></textarea>
+          <hr>
+
+          <!-- Poll Options -->
+          <h3>Please Add Your Poll Options:</h3>
+          <div class="poll-options">
+
+            <div class="form-group">
+              <label for="title">Title:</label>
+              <input type="text" class="form-control" placeholder="Enter Title Here" name="title"/>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description (Optional):</label>
+              <input type="text" class="form-control" placeholder="Enter Optional Description Here" name="description"/>
+            </div>
+
           </div>
 
-          <div class="form-group">
-            <label for="description">Description (Optional):</label>
-            <input type="text" class="form-control" style="border:1px solid black;" placeholder="Enter Optional Description Here" name="description"/>
+          <div id="two-buttons">
+            <button type="button" class="main-button" value="Add" id="add">Add option</button>
+            <button type="submit" class="main-button" id="submit">Submit</button>
           </div>
-        </div>
-        <div id="two-buttons">
-          <button type="button" style="background-color: #89C1FF; border: #89C1FF;" class="btn btn-primary" value="Add" id="add">Add option</button>
-          <button type="button" style="background-color: #89C1FF; border:#89C1FF;"class="btn btn-primary" id="submit">Submit</button>
-        </div>
-      </section>
+        </section>
+      </form>
     </main>
   </body>
 </html>
