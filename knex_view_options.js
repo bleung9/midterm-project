@@ -15,9 +15,11 @@ function viewOptions(participantLink) {
   .select('option_text', 'option_description')
   .where('polls.participant_link', participantLink)
   .then(function(rows) {
-    console.log(rows);
+    return rows;
+  }).then(function() {
     knex.destroy();
-  }).catch(function(err) {
+  })
+  .catch(function(err) {
     console.log(err);
   });
 }
