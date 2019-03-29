@@ -13,6 +13,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const random_url_gen = require('./public/scripts/random_url_gen');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -33,6 +34,7 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
+
 app.use(express.static("public"));
 
 // Mount all resource routes
@@ -45,13 +47,37 @@ app.get("/", (req, res) => {
 
 // (3) app.get to /submitted after submission
 app.post("/poll_submitted", function(req, res) {
-  // let templateVars = {question: question,
-  //                     email: email,
-  //                     title: title,
-                         // description: description};
-  res.send(req.body);
+  let templateVars = {question: req.body.question,
+                      email: req.body.email,
+                      title: req.body.title,
+                      description: req.body.description};
+  // console.log(templateVars);
+  // console.log(random_url_gen());
+
+  //NEED TO INSERT THIS SUBMISSION DATA AND URL INTO DATABASE!!!!!!
+
   // res.render(SUCCESSFUL SUBMISSION PAGE (w/ links to both admin, participation url))
+
 });
+
+app.post("/votes_submitted", function(req, res) {
+
+});
+
+app.get("/u/:url", function(req, res) {
+  //check if userURL exists in database
+});
+
+app.get("/a/:url", function(req, res) {
+  //check if adminURL exists in database
+
+});
+
+app.get("/test", function(req, res) {
+  res.render("take_poll");
+});
+
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
