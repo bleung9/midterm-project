@@ -52,30 +52,33 @@ app.post("/poll_submitted", function(req, res) {
                       title: req.body.title,
                       description: req.body.description};
   // console.log(templateVars);
-  // console.log(random_url_gen());
-
+  let admin = random_url_gen();
+  let voter = random_url_gen();
+  templateVars.admin_link = admin;
+  templateVars.voter_link = voter;
   //NEED TO INSERT THIS SUBMISSION DATA AND URL INTO DATABASE!!!!!!
 
   // res.render(SUCCESSFUL SUBMISSION PAGE (w/ links to both admin, participation url))
 
 });
 
-app.post("/votes_submitted", function(req, res) {
-
+app.get("/poll_submitted", function(req, res) {
+  res.render("poll_submitted");
 });
 
 app.get("/u/:url", function(req, res) {
   //check if userURL exists in database
+  res.render("take_poll");
 });
 
 app.get("/a/:url", function(req, res) {
   //check if adminURL exists in database
-
+  res.render("poll_results");
 });
 
-app.get("/test", function(req, res) {
-  res.render("take_poll");
-});
+app.get("/thanks", function(req, res) {
+  res.render("thanks");
+})
 
 
 
