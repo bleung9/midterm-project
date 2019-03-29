@@ -14,7 +14,7 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const random_url_gen = require('./public/scripts/random_url_gen');
-
+const knexParticipant = require('knex_view_options');
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const pollRoutes = require("./routes/polls");
@@ -64,10 +64,7 @@ app.post("/poll_submitted", function(req, res) {
   create_poll(templateVars);
 
   // console.log(templateVars);
-  let admin = random_url_gen();
-  let voter = random_url_gen();
-  templateVars.admin_link = admin;
-  templateVars.voter_link = voter;
+
   //NEED TO INSERT THIS SUBMISSION DATA AND URL INTO DATABASE!!!!!!
 
   // res.render(SUCCESSFUL SUBMISSION PAGE (w/ links to both admin, participation url))
@@ -83,8 +80,22 @@ app.post("/votes_submitted", function(req, res) {
 });
 
 app.get("/u/:url", function(req, res) {
+
+  function displayPollOptions(err, results) {
+    knexParticipant.viewOptions() {
+      return
+    }
+  }
+  let templateVars = {
+
+  }
+  res.render("take_poll");
   //check if userURL exists in database
   res.render("take_poll");
+});
+
+app.post("/u/:url", function(req, res) {
+  res.redirect("thanks")
 });
 
 app.get("/a/:url", function(req, res) {
