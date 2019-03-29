@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <!-- Meta Information -->
+      <title>Pikachoose - Home Page</title>
+  
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <meta charset="utf-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+      <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+      <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+
+      <script type="text/javascript" src="/scripts/app.js"></script>
+    </head>
+  <body>
+    
+    <!-- Top nav bar -->
+    <nav class="navbar navbar-inverse" style="height:80px; background-color: #89C1FF; border:5px solid #89C1FF;">
+      <div class="navbar-brand" href="#" style="display: flex; justify-content: center;">
+        <img src="https://i.imgur.com/2rIMflI.png" width="50" height="50" class="d-inline-block align-top" alt="">
+        <p style="line-height: 50px; padding-left: 0.5rem; color:white;"><font size ="+6">Pikachoose</font></p>
+      </div> 
+    </nav>
+  
+    <!-- Main Container -->
+    <main class="container text-center" style="display:flex; align-items: center; justify-content:center; flex-direction: column;">    
+      <section class="row"> 
+        <h1>Name's Poll</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <hr>
+      </section>
+      
+      <h3 class="col-sm-8 text-left">Question: Question will be displayed here.</h3>
+          
+    <!-- Options -->
+    <section id="options" class="row">
+      <h3>Please Drag These Options to Rank Them in Order of Preference:</h3>
+      <!-- Article container that options will be populated in. Note the draggable tag may need to be changed depending on requirements of drag and drop -->
+      <article id="drag_options" style="border-radius: 5px; border:1px solid black; min-height: 50px; margin-bottom:10px;" draggable="true">
+        <span>Example text</span>
+      </article>  
+    </section>
+    <div id="button" class="row">
+      <button type="button" style="background-color: #89C1FF; border:#89C1FF;"class="btn btn-primary">Submit</button>
+    </div>
+    </div>
+  </body>
+</html>
