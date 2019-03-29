@@ -4,26 +4,20 @@
       <!-- Meta Information -->
       <title>Pikachoose - Home Page</title>
 
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-      <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-      <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+      <link rel="stylesheet" href="../public/vendor/normalize-4.1.1.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../public/styles/take_poll.css">
+
 
       <script type="text/javascript" src="/scripts/app.js"></script>
     </head>
   <body>
 
     <!-- Top nav bar -->
-    <nav class="navbar navbar-inverse" style="height:80px; background-color: #89C1FF; border:5px solid #89C1FF;">
-      <div class="navbar-brand" href="#" style="display: flex; justify-content: center;">
-        <img src="https://i.imgur.com/2rIMflI.png" width="50" height="50" class="d-inline-block align-top" alt="">
-        <p style="line-height: 50px; padding-left: 0.5rem; color:white;"><font size ="+6">Pikachoose</font></p>
-      </div>
-    </nav>
+    <% include partials/nav_bar %>
 
     <!-- Main Container -->
     <main class="container text-center" style="display:flex; align-items: center; justify-content:center; flex-direction: column;">
