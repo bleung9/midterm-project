@@ -1,0 +1,20 @@
+.container-main-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#drag-options {
+  border-radius: 5px;
+  border: 1px solid black;
+  min-height: 50px;
+  margin-bottom: 10px;
+}
+
+#poll-submit-button {
+  background-color: #89C1FF;
+  border: #89C1FF;
+}
+
+/*# sourceMappingURL=take_poll.css.map */
