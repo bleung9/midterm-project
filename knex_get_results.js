@@ -16,6 +16,7 @@ function getResults(adminLink) {
   .where('results.admin_link', adminLink)
   .then(function(rows) {
     return rows;
+  }).then(function() {
     knex.destroy();
   }).catch(function(err) {
     console.log(err);
