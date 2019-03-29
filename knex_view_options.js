@@ -12,7 +12,7 @@ const knex = require("knex")({
 function viewOptions(participantLink) {
   knex('options')
   .join('polls', 'options.admin_link', '=', 'polls.admin_link')
-  .select('option_text').from('options')
+  .select('option_text', 'option_description')
   .where('polls.participant_link', participantLink)
   .then(function(rows) {
     console.log(rows);
@@ -22,4 +22,4 @@ function viewOptions(participantLink) {
   });
 }
 
-console.log(viewOptions("00000000"));
+viewOptions();

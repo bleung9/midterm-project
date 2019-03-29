@@ -10,14 +10,16 @@ const knex = require("knex")({
 });
 
 function getResults(adminLink) {
-  knex.select('*').from('results')
-  // .where('admin_link', adminLink)
+  knex('results')
+  .join('options', 'results.option_id', '=', 'options.option_id')
+  .select('results.rank', 'options.option_text', 'options.option_description')
+  .where('results.admin_link', adminLink)
   .then(function(rows) {
-    console.log(rows);
+    return rows;
     knex.destroy();
   }).catch(function(err) {
     console.log(err);
   });
 }
 
-getResults("aA1bB3ZZ");
+getResults();
