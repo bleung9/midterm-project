@@ -1,0 +1,15 @@
+.main-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#drag-options {
+  border-radius: 5px;
+  border: 1px solid black;
+  min-height: 50px;
+  margin-bottom: 10px;
+}
+
+/*# sourceMappingURL=view_results.css.map */
