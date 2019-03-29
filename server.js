@@ -47,7 +47,8 @@ app.get("/", (req, res) => {
 app.post("/poll_submitted", function(req, res) {
   // let templateVars = {question: question,
   //                     email: email,
-  //                     };
+  //                     title: title,
+                         // description: description};
   res.send(req.body);
   // res.render(SUCCESSFUL SUBMISSION PAGE (w/ links to both admin, participation url))
 });
