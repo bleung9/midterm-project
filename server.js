@@ -55,13 +55,13 @@ function create_poll() {
 app.post("/poll_submitted", function(req, res) {
   let admin_link = random_url_gen();
   let participant_link = random_url_gen();
-  // let templateVars = {admin_link: admin_link,
-  //                     participant_link: participant_link,
-  //                     poll_question: req.body.question,
-  //                     creator_email: req.body.email,
-  //                     title: req.body.title,
-  //                     description: req.body.description};
-  // create_poll(templateVars);
+  let templateVars = {admin_link: admin_link,
+                      participant_link: participant_link,
+                      poll_question: req.body.question,
+                      creator_email: req.body.email,
+                      title: req.body.title,
+                      description: req.body.description};
+  create_poll(templateVars);
 
   // console.log(templateVars);
   let admin = random_url_gen();
@@ -80,18 +80,15 @@ app.get("/poll_submitted", function(req, res) {
 
 app.post("/votes_submitted", function(req, res) {
   res.redirect("thanks");
-
 });
 
 app.get("/u/:url", function(req, res) {
-
   //check if userURL exists in database
   res.render("take_poll");
 });
 
 app.get("/a/:url", function(req, res) {
   //check if adminURL exists in database
-
   res.render("poll_results");
 });
 
