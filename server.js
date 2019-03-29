@@ -61,7 +61,7 @@ app.post("/poll_submitted", function(req, res) {
 });
 
 app.post("/votes_submitted", function(req, res) {
-
+  res.redirect("thanks");
 });
 
 app.get("/u/:url", function(req, res) {
@@ -71,13 +71,8 @@ app.get("/u/:url", function(req, res) {
 
 app.get("/a/:url", function(req, res) {
   //check if adminURL exists in database
-
+  res.render("poll_results")
 });
-
-
-app.get("/thanks", function(req, res) {
-  res.render("thanks");
-})
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
