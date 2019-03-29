@@ -4,7 +4,7 @@
     <title>Pikachoose - Home Page</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -23,26 +23,26 @@
       <div class="navbar-brand" href="#" style="display: flex; justify-content: center;">
         <img src="https://i.imgur.com/2rIMflI.png" width="50" height="50" class="d-inline-block align-top" alt="">
         <p style="line-height: 50px; padding-left: 0.5rem; color:white;"><font size ="+6">Pikachoose</font></p>
-      </div> 
+      </div>
     </nav>
-    
+
     <!-- Main Container -->
-    <main class="container text-left" style="display:flex; align-items: center;justify-content:center; flex-direction: column;">    
-      <section class="col-sm-8 text-left"> 
+    <main class="container text-left" style="display:flex; align-items: center;justify-content:center; flex-direction: column;">
+      <section class="col-sm-8 text-left">
         <h1>Welcome</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <hr>
       </section>
-  
+
           <!-- Poll Question and User Email -->
-      <section id="poll" class="col-sm-8 text-left">
+      <section id="poll" class="col-sm-8 text-left" action="/poll_submitted" method="POST">
         <h3>Please Enter Your Question:</h3>
-        <textarea id="make-question" style="width:100%; border-radius: 5px;" name="text" placeholder="What question would you like to ask?" style="border-radius: 5px;"></textarea>
+        <textarea id="make-question" style="width:100%; border-radius: 5px;" name="question" placeholder="What question would you like to ask?" style="border-radius: 5px;"></textarea>
         <h3>Please Enter Your Email:</h3>
         <!-- Textarea will need to have email input type when form added -->
-        <textarea id="add-email" style="width:100%; border-radius: 5px;" name="text" placeholder="example@example.com" style="border-radius: 5px;"></textarea>
+        <textarea id="add-email" style="width:100%; border-radius: 5px;" name="email" placeholder="example@example.com" style="border-radius: 5px;"></textarea>
         <hr>
-  
+
         <!-- Poll Options -->
         <h3>Please Add Your Poll Options:</h3>
         <div id="poll-options">
@@ -50,7 +50,7 @@
             <label for="title">Title:</label>
             <input type="text" class="form-control" style="border:1px solid black;" placeholder="Enter Title Here" name="title"/>
           </div>
-            
+
           <div class="form-group">
             <label for="description">Description (Optional):</label>
             <input type="text" class="form-control" style="border:1px solid black;" placeholder="Enter Optional Description Here" name="description"/>
