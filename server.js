@@ -14,7 +14,7 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const random_url_gen = require('./public/scripts/random_url_gen');
-
+const knexParticipant = require('knex_view_options');
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const pollRoutes = require("./routes/polls");
@@ -77,8 +77,20 @@ app.post("/votes_submitted", function(req, res) {
 });
 
 app.get("/u/:url", function(req, res) {
-    res.render("take_poll");
+  function displayPollOptions(err, results) {
+    knexParticipant.viewOptions() {
+      return 
+    }
+  }
+  let templateVars = {
+    
+  }
+  res.render("take_poll");
   //check if userURL exists in database
+});
+
+app.post("/u/:url", function(req, res) {
+  res.redirect("thanks")
 });
 
 app.get("/a/:url", function(req, res) {
