@@ -65,6 +65,7 @@ app.post("/votes_submitted", function(req, res) {
 });
 
 app.get("/u/:url", function(req, res) {
+    res.render("take_poll");
   //check if userURL exists in database
 });
 
@@ -73,11 +74,10 @@ app.get("/a/:url", function(req, res) {
 
 });
 
-app.get("/test", function(req, res) {
-  res.render("take_poll");
-});
 
-
+app.get("/thanks", function(req, res) {
+  res.render("thanks");
+})
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
