@@ -16,7 +16,7 @@ function addAnswers() {
     knex.destroy();
   }).catch(function(err) {
     console.log(err);
-  }); 
+  });
 }
 
 addAnswers();

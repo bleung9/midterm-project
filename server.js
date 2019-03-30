@@ -16,9 +16,10 @@ const knexLogger  = require('knex-logger');
 const random_url_gen = require('./public/scripts/random_url_gen');
 const vO = require('./knex_view_options');
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+// const usersRoutes = require("./routes/users");
 const pollRoutes = require("./routes/polls");
 const mailgun = require('./test-mailgun.js')
+const dbUtils = require("./db-utils");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -40,9 +41,6 @@ app.use("/styles", sass({
 
 app.use(express.static("public"));
 
-// Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
-
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
@@ -54,12 +52,6 @@ app.get("/", (req, res) => {
 
 // (3) app.get to /submitted after submission
 
-app.post("/poll_submitted", function(req, res) {  
-    let admin_link = random_url_gen();
-    let participant_link = random_url_gen();
-
-    mailgun.sendEmail(req.body.email, admin_link, participant_link);
-  });
   // function renderLinks(callback) {
   //   let admin_link = random_url_gen();
   //   let participant_link = random_url_gen();
@@ -82,8 +74,23 @@ app.post("/poll_submitted", function(req, res) {
 
   // create_poll(templateVars);
 
-  // console.log(templateVars);
-  // console.log(random_url_gen());
+  // ERROR IF ONLY ONE POLL QUESTION SUBMITTED
+  // because params title is entry instead of array
+app.post("/poll_submitted", function(req, res) {  
+  let admin_link = random_url_gen();
+  let participant_link = random_url_gen();
+
+  let submitLink = {admin_link: admin_link,
+                      participant_link: participant_link,
+                      poll_question: req.body.question,
+                      creator_email: req.body.email,
+                      title: req.body.title,
+                      description: req.body.description};
+
+  dbUtils.createPoll(submitLink).then( () => {
+    mailgun.sendEmail(req.body.email, admin_link, participant_link);
+    res.render("poll_submitted", {admin_link: admin_link, participant_link: participant_link});
+  });
 
   //NEED TO INSERT THIS SUBMISSION DATA AND URL INTO DATABASE!!!!!!
 
@@ -96,14 +103,18 @@ app.post("/poll_submitted", function(req, res) {
 
 
 app.get("/a/:adminURL", function(req, res) {
-  //check if adminURL exists in database
-
-  let qGR = require('./knex_get_results');
+  // TO DO: check if adminURL exists in database
   let adminURL = String(req.params.adminURL);
-
-  qGR.getResults(adminURL).then((queryResult) => {
-    queryResult[i].rank
-    res.render("poll_results", {queryResult: queryResult});
+  dbUtils.validURL(adminURL).then(function(queryResult) {
+    if (!queryResult[0][0]) {
+      res.status(400).send("not a valid admin URL!");
+      return;
+    }
+    else {
+      dbUtils.getResults(adminURL).then( (queryResult) => {
+      res.render("poll_results", {queryResult: queryResult});
+      });
+    }
   });
 });
 
@@ -112,9 +123,25 @@ app.post("/votes_submitted", function(req, res) {
 });
 
 app.get("/u/:participant_url", function(req, res) {
-  vO.viewOptions(String(req.params.participant_url)).then((result) => {
-    res.render("take_poll", {result: result});
+  let partURL = String(req.params.participant_url);
+  dbUtils.validURL(partURL).then(function(queryResult) {
+    if (!queryResult[0][0]) {
+      res.status(400).send("not a valid participant URL!");
+      return;
+    }
+    else {
+      dbUtils.viewOptions(String(req.params.participant_url)).then( (result) => {
+      res.render("take_poll", {result: result})
+      });
+    }
   });
+  // TO DO close connection and hand errors
+
+  // code below kept just in case
+  // if the above works, remove dead code
+/*  vO.viewOptions(String(req.params.participant_url)).then((result) => {
+    res.render("take_poll", {result: result});
+  });*/
   //check if userURL exists in database
 });
 
@@ -122,10 +149,6 @@ app.post("/u/:participant_url", function(req, res) {
   res.redirect("thanks")
 });
 
-app.get("/a/:url", function(req, res) {
-  //check if adminURL exists in database
-  res.render("poll_results")
-});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

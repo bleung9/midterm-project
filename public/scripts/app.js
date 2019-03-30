@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $(() => {
+/*  $(() => {
     $.ajax({
       method: "GET",
       url: "/api/users"
@@ -9,13 +9,11 @@ $(document).ready(function() {
         $("<div>").text(user.name).appendTo($("body"));
       }
     });
-  });
+  });*/
 
-  console.log('setting up event listener');
 
   $("#add").click(function(event) {
     event.preventDefault();
-    console.log("random hello");
     $("#two-buttons").prev().append( `
       <div class="form-group">
         <label for="email">Title:</label>
@@ -29,8 +27,9 @@ $(document).ready(function() {
   });
 
   $("#submit").click(function(event) {
-    console.log("Asdf");
-    $.post("/poll_submitted");
+    event.preventDefault();
+    let data = $("#submit-form").serialize();
+    $.post("/poll_submitted", data);
   });
 
 });
