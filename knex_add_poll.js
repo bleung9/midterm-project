@@ -11,7 +11,7 @@ const knex = require("knex")({
 
 function createPoll(submitForm) {
   knex('polls').insert({ admin_link: submitForm.admin_link, participant_link: submitForm.voter_link, poll_question: submitForm.question, creator_email: submitForm.email})
-  .then(function () { 
+  .then(function () {
     let optionsToInsert = submitForm.title.map((x, index) => ({admin_link: submitForm.admin_link, option_text: x, option_description: submitForm.description[index]}))
       for (let i = 0; i < optionsToInsert.length; i++) {
         knex('options').insert(optionsToInsert[i]).then();
@@ -21,7 +21,7 @@ function createPoll(submitForm) {
     knex.destroy();
   }).catch(function(err) {
     console.log(err);
-  }); 
+  });
 }
 
 createPoll();

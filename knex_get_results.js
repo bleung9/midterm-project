@@ -10,17 +10,10 @@ const knex = require("knex")({
 });
 
 function getResults(adminLink) {
-  knex('results')
+  return Promise.all([knex('results')
   .join('options', 'results.option_id', '=', 'options.option_id')
   .select('results.rank', 'options.option_text', 'options.option_description')
-  .where('results.admin_link', adminLink)
-  .then(function(rows) {
-    return rows;
-  }).then(function() {
-    knex.destroy();
-  }).catch(function(err) {
-    console.log(err);
-  });
+  .where('results.admin_link', adminLink)]);
 }
 
-getResults();
+getResults("abcd1234").then((rows) => console.log(rows));
