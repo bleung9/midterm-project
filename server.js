@@ -18,6 +18,7 @@ const vO = require('./knex_view_options');
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const pollRoutes = require("./routes/polls");
+const dbUtils = require("./db-utils");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -40,16 +41,13 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
+// DO WE NEED THIS ? ? ? I don't think so
 app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
 });
-
-function create_poll() {
-
-}
 
 // (3) app.get to /submitted after submission
 app.post("/poll_submitted", function(req, res) {
@@ -70,7 +68,6 @@ app.post("/poll_submitted", function(req, res) {
 
   // res.render(SUCCESSFUL SUBMISSION PAGE (w/ links to both admin, participation url))
 
-<<<<<<< HEAD
 // //   }
 // //   res.render("take_poll");
 // //   //check if userURL exists in database
@@ -82,15 +79,12 @@ app.post("/u/:userURL", function(req, res) {
 });
 
 app.get("/a/:adminURL", function(req, res) {
-  //check if adminURL exists in database
-
-  let qGR = require('./knex_get_results');
+  // TO DO: check if adminURL exists in database
   let adminURL = String(req.params.adminURL);
-
-  qGR.getResults(adminURL).then((queryResult) => {
-    queryResult[i].rank
+  dbUtils.getResults(adminURL).then( (queryResult) => {
     res.render("poll_results", {queryResult: queryResult});
   });
+  // close db and error handle here;
 });
 
 app.post("/votes_submitted", function(req, res) {
@@ -98,9 +92,17 @@ app.post("/votes_submitted", function(req, res) {
 });
 
 app.get("/u/:participant_url", function(req, res) {
-  vO.viewOptions(String(req.params.participant_url)).then((result) => {
-    res.render("take_poll", {result: result});
+  dbUtils.viewOptions(String(req.params.participant_url))
+  .then( (result) => {
+    res.render("take_poll", {result: result})
   });
+  // TO DO close connection and hand errors
+
+  // code below kept just in case
+  // if the above works, remove dead code
+/*  vO.viewOptions(String(req.params.participant_url)).then((result) => {
+    res.render("take_poll", {result: result});
+  });*/
   //check if userURL exists in database
 });
 
@@ -108,10 +110,6 @@ app.post("/u/:participant_url", function(req, res) {
   res.redirect("thanks")
 });
 
-app.get("/a/:url", function(req, res) {
-  //check if adminURL exists in database
-  res.render("poll_results")
-});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
