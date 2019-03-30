@@ -69,9 +69,19 @@ app.get("/u/:url", function(req, res) {
   //check if userURL exists in database
 });
 
-app.get("/a/:url", function(req, res) {
+app.get("/a/:adminURL", function(req, res) {
   //check if adminURL exists in database
-  res.render("poll_results")
+  let qGR = require('./knex_get_results');
+  let adminURL = String(req.params.adminURL);
+
+  async function f() {
+    let queryResult = await qGR.getResults(adminURL);
+    console.log(queryResult);
+    res.render("poll_results", {queryResult: queryResult});
+
+  }
+
+  f();
 });
 
 app.listen(PORT, () => {

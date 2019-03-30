@@ -9,8 +9,8 @@ const knex = require("knex")({
   }
 });
 
-function getResults(adminLink) {
-  knex('results')
+/*function getResults(adminLink) {
+  return knex('results')
   .join('options', 'results.option_id', '=', 'options.option_id')
   .select('results.rank', 'options.option_text', 'options.option_description')
   .where('results.admin_link', adminLink)
@@ -21,6 +21,16 @@ function getResults(adminLink) {
   }).catch(function(err) {
     console.log(err);
   });
+}*/
+
+function getResults(adminLink) {
+  return knex('results')
+  .join('options', 'results.option_id', '=', 'options.option_id')
+  .select('results.rank', 'options.option_text', 'options.option_description')
+  .where('results.admin_link', adminLink)
+  .then(function(rows) {
+    return rows;
+  })
 }
 
-getResults();
+module.exports = {getResults: getResults};

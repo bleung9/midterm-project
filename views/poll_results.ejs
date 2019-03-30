@@ -9,7 +9,6 @@
 
       <link rel="stylesheet" type="text/css" href="../public/styles/results_page.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
   <body>
 
@@ -29,6 +28,11 @@
     <section id="options" class="row">
       <!-- Article container that options will be populated in. -->
       <h3>Results:</h3>
+      <% queryResult.forEach((x) => { %>
+      <div>rank: <%= x.rank %> </div>
+      <div>options:<%= x.option_text %> </div>
+      <div>option description: <%= x.option_description %> </div>
+    <% }) %>
 
       <article id="drag_options">
         <span>Example text</span>
