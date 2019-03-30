@@ -61,7 +61,7 @@ function createPoll(submitForm) {
 
 
 module.exports = {
-<<<<<<< HEAD
+
   validURL: validURL,
   viewOptions: viewOptions,
   getResults: getResults,
