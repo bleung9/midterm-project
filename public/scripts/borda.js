@@ -63,6 +63,18 @@ for (i = 0; i < sorted.length; i++) {
   }
 }
 
+//push a value of true into the arrays denoting the top ranked choice(s)
+let max = sorted[0][1];
+sorted[0].push(true);
+for (i = 1; i < sorted.length; i++) {
+  if (max > sorted[i][1]) {
+    break;
+  }
+  else {
+    sorted[i].push(true);
+  }
+}
+
 console.log(sorted);
 
 
