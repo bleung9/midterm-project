@@ -9,6 +9,7 @@ const knex = require("knex")({
   }
 });
 
+
 function getResults(adminLink) {
   return Promise.all([knex('results')
   .join('options', 'results.option_id', '=', 'options.option_id')
@@ -16,4 +17,5 @@ function getResults(adminLink) {
   .where('results.admin_link', adminLink)]);
 }
 
-getResults("abcd1234").then((rows) => console.log(rows));
+
+module.exports = {getResults: getResults};

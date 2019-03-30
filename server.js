@@ -105,9 +105,16 @@ app.post("/u/:url", function(req, res) {
   res.redirect("thanks")
 });
 
-app.get("/a/:url", function(req, res) {
+app.get("/a/:adminURL", function(req, res) {
   //check if adminURL exists in database
-  res.render("poll_results");
+
+  let qGR = require('./knex_get_results');
+  let adminURL = String(req.params.adminURL);
+
+  qGR.getResults(adminURL).then((queryResult) => {
+    res.render("poll_results", {queryResult: queryResult});
+  })
+
 });
 
 app.get("/thanks", function(req, res) {
