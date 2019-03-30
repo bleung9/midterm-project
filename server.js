@@ -17,6 +17,8 @@ const random_url_gen = require('./public/scripts/random_url_gen');
 const vO = require('./knex_view_options');
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+const pollRoutes = require("./routes/polls");
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -45,12 +47,22 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+function create_poll() {
+
+}
+
 // (3) app.get to /submitted after submission
 app.post("/poll_submitted", function(req, res) {
-  let templateVars = {question: req.body.question,
-                      email: req.body.email,
-                      title: req.body.title,
-                      description: req.body.description};
+  let admin_link = random_url_gen();
+  let participant_link = random_url_gen();
+  // let templateVars = {admin_link: admin_link,
+  //                     participant_link: participant_link,
+  //                     poll_question: req.body.question,
+  //                     creator_email: req.body.email,
+  //                     title: req.body.title,
+  //                     description: req.body.description};
+  // create_poll(templateVars);
+
   // console.log(templateVars);
   // console.log(random_url_gen());
 
