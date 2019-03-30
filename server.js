@@ -70,7 +70,6 @@ app.post("/poll_submitted", function(req, res) {
 
   // res.render(SUCCESSFUL SUBMISSION PAGE (w/ links to both admin, participation url))
 
-<<<<<<< HEAD
 // //   }
 // //   res.render("take_poll");
 // //   //check if userURL exists in database
