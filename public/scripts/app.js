@@ -1,15 +1,8 @@
 $(document).ready(function() {
 
-/*  $(() => {
-    $.ajax({
-      method: "GET",
-      url: "/api/users"
-    }).done((users) => {
-      for(user of users) {
-        $("<div>").text(user.name).appendTo($("body"));
-      }
-    });
-  });*/
+  function checkMultipleQuestionsSubmit() {
+
+  }
 
 
   $("#add").click(function(event) {
@@ -26,9 +19,17 @@ $(document).ready(function() {
     </div>`);
   });
 
-  $("#submit").click(function(event) {
-    console.log("Asdf");
-    $.post("/poll_submitted");
+
+  $("#submit-button").click(function(event) {
+    event.preventDefault();
+    for (x of $("#poll").children() ) {
+      console.log(x);
+    }
+    // console.log($("#poll").children());
+
+    // check more than 1 question submitted
+/*    console.log($("#two-buttons"));
+    $.post("/poll_submitted");*/
   });
 
 });
