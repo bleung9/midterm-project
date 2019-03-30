@@ -54,13 +54,20 @@ app.get("/", (req, res) => {
 app.post("/poll_submitted", function(req, res) {
   let admin_link = random_url_gen();
   let participant_link = random_url_gen();
-  // let templateVars = {admin_link: admin_link,
-  //                     participant_link: participant_link,
-  //                     poll_question: req.body.question,
-  //                     creator_email: req.body.email,
-  //                     title: req.body.title,
-  //                     description: req.body.description};
-  // create_poll(templateVars);
+  console.log(req.body);
+  // ERROR IF ONLY ONE POLL QUESTION SUBMITTED
+  // because params title is entry instead of array
+  let submitLink = {admin_link: admin_link,
+                      participant_link: participant_link,
+                      poll_question: req.body.question,
+                      creator_email: req.body.email,
+                      title: req.body.title,
+                      description: req.body.description};
+
+  dbUtils.createPoll(submitLink).then( () => {
+    res.render("poll_submitted", {admin_link: admin_link, participant_link: participant_link});
+  });
+
 
   // console.log(templateVars);
   // console.log(random_url_gen());
