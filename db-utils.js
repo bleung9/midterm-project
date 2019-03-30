@@ -9,6 +9,10 @@ const knex = require("knex")({
   }
 });
 
+function validURL(link) {
+  console.log("validURL running");
+  return Promise.all([knex('polls').where(link, 'polls.admin_link').orWhere(link, 'polls.participant_link')]);
+}
 
 function getResults(adminLink) {
   return Promise.all([
@@ -51,7 +55,8 @@ function createPoll(submitForm) {
 
 
 module.exports = {
+  validURL: validURL,
   viewOptions: viewOptions,
   getResults: getResults,
-  createPoll: createPoll
+  createPoll: createPoll,
   };

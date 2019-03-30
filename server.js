@@ -53,16 +53,15 @@ app.get("/", (req, res) => {
 app.post("/poll_submitted", function(req, res) {
   let admin_link = random_url_gen();
   let participant_link = random_url_gen();
-  // let templateVars = {admin_link: admin_link,
-  //                     participant_link: participant_link,
-  //                     poll_question: req.body.question,
-  //                     creator_email: req.body.email,
-  //                     title: req.body.title,
-  //                     description: req.body.description};
+  let templateVars = {admin_link: admin_link,
+                      participant_link: participant_link,
+                      poll_question: req.body.question,
+                      creator_email: req.body.email,
+                      title: req.body.title,
+                      description: req.body.description};
   // create_poll(templateVars);
 
-  // console.log(templateVars);
-  // console.log(random_url_gen());
+  console.log(templateVars);
 
   //NEED TO INSERT THIS SUBMISSION DATA AND URL INTO DATABASE!!!!!!
 
@@ -82,8 +81,10 @@ app.post("/u/:userURL", function(req, res) {
 app.get("/a/:adminURL", function(req, res) {
   // TO DO: check if adminURL exists in database
   let adminURL = String(req.params.adminURL);
+  let bool = dbUtils.validURL(adminURL).then((queryResult) => console.log(queryResult));
+  console.log(bool);
   dbUtils.getResults(adminURL).then( (queryResult) => {
-    res.render("poll_results", {queryResult: queryResult});
+  res.render("poll_results", {queryResult: queryResult});
   });
   // close db and error handle here;
 });

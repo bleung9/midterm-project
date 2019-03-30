@@ -29,8 +29,9 @@ $(document).ready(function() {
   });
 
   $("#submit").click(function(event) {
-    console.log("Asdf");
-    $.post("/poll_submitted");
+    event.preventDefault();
+    let data = $("#submit-form").serialize();
+    $.post("/poll_submitted", data);
   });
 
 });
