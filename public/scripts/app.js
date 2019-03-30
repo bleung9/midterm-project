@@ -30,7 +30,7 @@ $(document).ready(function() {
     event.preventDefault();
     let data = $("#submit-form").serialize();
     console.log(data);
-    $.post("/poll_submitted", data);
+    $.post("/poll_submitted", data, );
   });
 
 });
