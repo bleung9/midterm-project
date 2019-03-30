@@ -132,7 +132,8 @@ app.get("/u/:participant_url", function(req, res) {
     }
     else {
       dbUtils.viewOptions(String(req.params.participant_url)).then( (result) => {
-      res.render("take_poll", {result: result})
+        console.log(result);
+        res.render("take_poll", {result: result});
       });
     }
   });

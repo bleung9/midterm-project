@@ -24,19 +24,33 @@
         <hr>
       </section>
 
-      <h3 class="col-sm-8 text-left">Question: <%= result[0].poll_question %></h3>
+      <h3 class="col-sm-8 text-left">Question: <%= result[0][0].poll_question %></h3>
 
     <!-- Options -->
     <section id="options" class="row">
       <h3>Please Drag These Options to Rank Them in Order of Preference:</h3>
       <!-- Article container that options will be populated in. Note the draggable tag may need to be changed depending on requirements of drag and drop -->
     <form method="POST" action="/votes_submitted">
-      <article id="drag_options" draggable="true">
+      <article id="drag_options">
         <span>
-          <% for (var element in result) { %>
-          Poll Option: <%= result[element].option_text %> | Description: <%= result[element].option_description %>
-          <br>
-          <% } %>
+          <div id="reorder-slot-0" class="slot"></div>
+          <%  result[0].forEach( (element, idx) => { %>
+            <% var deadboltID = "deadbolt-"+(idx+1); %>
+            <% var reorderID = "reorder-slot-" + (idx+1); %>
+
+            <div id= <%= deadboltID %> class="deadbolt" >
+
+              <div class="question"
+                text= <%= element.option_text %>
+                description= <%= element.option_description %>
+                option_id= <%=element.option_id%> >
+              </div>
+
+              Poll Option: <%= element.option_text %> | Description: <%= element.option_description | idx %>
+            </div>
+
+            <div id= <%= reorderID %> class="slot"></div>
+          <% }) %>
         </span>
       </article>
     </section>

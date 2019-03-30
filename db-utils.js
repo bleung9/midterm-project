@@ -25,7 +25,7 @@ function getResults(adminLink) {
 function viewOptions(participantLink) {
   return Promise.all([knex('options')
   .join('polls', 'options.admin_link', '=', 'polls.admin_link')
-  .select('option_text', 'option_description', 'poll_question')
+  .select('option_text', 'option_description', 'poll_question', 'option_id')
   .where('polls.participant_link', participantLink)]);
 }
 
