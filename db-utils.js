@@ -9,12 +9,10 @@ const knex = require("knex")({
   }
 });
 
-<<<<<<< HEAD
+
 function validURL(link) {
   return Promise.all([knex('polls').where('polls.admin_link', link).orWhere('polls.participant_link', link)]);
 }
-=======
->>>>>>> b160368a1ca9bcd28d5ee9fcb78a133ede1b837e
 
 function getResults(adminLink) {
   return Promise.all([
@@ -68,9 +66,4 @@ module.exports = {
   viewOptions: viewOptions,
   getResults: getResults,
   createPoll: createPoll,
-=======
-  viewOptions: viewOptions,
-  getResults: getResults,
-  createPoll: createPoll
->>>>>>> b160368a1ca9bcd28d5ee9fcb78a133ede1b837e
   };
