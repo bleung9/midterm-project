@@ -52,19 +52,6 @@ app.get("/", (req, res) => {
 
 // (3) app.get to /submitted after submission
 
-  // function renderLinks(callback) {
-  //   let admin_link = random_url_gen();
-  //   let participant_link = random_url_gen();
-  //   console.log(admin_link)
-  //   callback(req.body.email, admin_link, participant_link);
-  // };
-
-  // renderLinks(function(email, admin_link, participant_link) {
-  //   let mailgun = require('./test-mailgun.js')
-  //   mailgun.sendEmail(email, admin_link, participant_link);
-  //   res.redirect('poll_submitted', {admin_link:admin_link});
-  // })
-
   // let templateVars = {admin_link: admin_link,
   //                     participant_link: participant_link,
   //                     poll_question: req.body.question,
