@@ -75,10 +75,11 @@ app.get("/a/:adminURL", function(req, res) {
   let adminURL = String(req.params.adminURL);
 
   async function f() {
+    // wait for query to complete
+    // then render the page with query as param
     let queryResult = await qGR.getResults(adminURL);
     console.log(queryResult);
     res.render("poll_results", {queryResult: queryResult});
-
   }
 
   f();
