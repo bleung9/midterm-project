@@ -29,6 +29,7 @@ $(document).ready(function() {
   $("#submit").click(function(event) {
     event.preventDefault();
     let data = $("#submit-form").serialize();
+    console.log(data);
     $.post("/poll_submitted", data);
   });
 
