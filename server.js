@@ -16,7 +16,7 @@ const knexLogger  = require('knex-logger');
 const random_url_gen = require('./public/scripts/random_url_gen');
 const vO = require('./knex_view_options');
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+// const usersRoutes = require("./routes/users");
 const pollRoutes = require("./routes/polls");
 const dbUtils = require("./db-utils");
 
@@ -41,8 +41,9 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
+
 // DO WE NEED THIS ? ? ? I don't think so
-app.use("/api/users", usersRoutes(knex));
+// app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
