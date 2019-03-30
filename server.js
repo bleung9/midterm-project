@@ -76,7 +76,7 @@ app.get("/", (req, res) => {
 
   // ERROR IF ONLY ONE POLL QUESTION SUBMITTED
   // because params title is entry instead of array
-app.post("/poll_submitted", function(req, res) {  
+app.post("/poll_submitted", function(req, res) {
   let admin_link = random_url_gen();
   let participant_link = random_url_gen();
 
@@ -91,6 +91,7 @@ app.post("/poll_submitted", function(req, res) {
     mailgun.sendEmail(req.body.email, admin_link, participant_link);
     res.render("poll_submitted", {admin_link: admin_link, participant_link: participant_link});
   });
+});
 
   //NEED TO INSERT THIS SUBMISSION DATA AND URL INTO DATABASE!!!!!!
 
