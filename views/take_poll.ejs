@@ -10,9 +10,6 @@
 
       <link rel="stylesheet" href="../public/vendor/normalize-4.1.1.css" type="text/css" />
       <link rel="stylesheet" type="text/css" href="../public/styles/take_poll.css">
-
-
-      <script type="text/javascript" src="/scripts/app.js"></script>
     </head>
   <body>
 
@@ -27,20 +24,28 @@
         <hr>
       </section>
 
-      <h3 class="col-sm-8 text-left">Question: Question will be displayed here.</h3>
+      <h3 class="col-sm-8 text-left">Question: <%= result[0].poll_question %></h3>
 
     <!-- Options -->
     <section id="options" class="row">
       <h3>Please Drag These Options to Rank Them in Order of Preference:</h3>
       <!-- Article container that options will be populated in. Note the draggable tag may need to be changed depending on requirements of drag and drop -->
+    <form method="POST" action="/votes_submitted">
       <article id="drag_options" draggable="true">
-        <span>Example text</span>
+        <span>
+          <% for (var element in result) { %>
+          Poll Option: <%= result[element].option_text %> | Description: <%= result[element].option_description %>
+          <br>
+          <% } %>
+        </span>
       </article>
     </section>
     <div id="button" class="row">
-      <button type="button" class="btn btn-primary">Submit</button>
+      <input type="submit" class="btn btn-primary" value="Submit"/>
     </div>
+  </form>
     </div>
+    </main>
   </body>
 
 <!--   <footer>
