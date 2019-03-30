@@ -77,21 +77,30 @@ app.get("/", (req, res) => {
   // ERROR IF ONLY ONE POLL QUESTION SUBMITTED
   // because params title is entry instead of array
 app.post("/poll_submitted", function(req, res) {
-  let admin_link = random_url_gen();
-  let participant_link = random_url_gen();
+  if (req.body.question === "" || req.body.email === "" ||
+      req.body.title === "" || (typeof req.body.title !== "string" && req.body.title.includes(""))) {
+        res.status(400).send("Please ensure all input fields are filled in!");
+        return;
+      }
+  else {
+    let admin_link = random_url_gen();
+    let participant_link = random_url_gen();
+    let submit_title;
+    (typeof req.body.title === "string") ? submit_title = [req.body.title] : submit_title = req.body.title;
+    // ERROR IF ONLY ONE POLL QUESTION SUBMITTED
+    // because params title is entry instead of array
+    let submitLink = {admin_link: admin_link,
+                        participant_link: participant_link,
+                        poll_question: req.body.question,
+                        creator_email: req.body.email,
+                        title: submit_title,
+                        description: req.body.description};
+    console.log(req.body);
 
-  let submitLink = {admin_link: admin_link,
-                      participant_link: participant_link,
-                      poll_question: req.body.question,
-                      creator_email: req.body.email,
-                      title: req.body.title,
-                      description: req.body.description};
-
-  dbUtils.createPoll(submitLink).then( () => {
-    mailgun.sendEmail(req.body.email, admin_link, participant_link);
-    res.render("poll_submitted", {admin_link: admin_link, participant_link: participant_link});
-  });
-});
+    dbUtils.createPoll(submitLink).then( () => {
+      res.render("poll_submitted", {admin_link: admin_link, participant_link: participant_link});
+    });
+  }
 
   //NEED TO INSERT THIS SUBMISSION DATA AND URL INTO DATABASE!!!!!!
 

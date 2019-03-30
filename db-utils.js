@@ -37,7 +37,7 @@ function createPoll(submitForm) {
     poll_question: submitForm.poll_question,
     creator_email: submitForm.creator_email
   });
-
+  console.log("submitForm: ", submitForm)
   let optionsToInsert = submitForm.title.map( (x, index) => ({
     admin_link: submitForm.admin_link,
     option_text: x,
