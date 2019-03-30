@@ -11,8 +11,7 @@ const knex = require("knex")({
 
 <<<<<<< HEAD
 function validURL(link) {
-  console.log("validURL running");
-  return Promise.all([knex('polls').where(link, 'polls.admin_link').orWhere(link, 'polls.participant_link')]);
+  return Promise.all([knex('polls').where('polls.admin_link', link).orWhere('polls.participant_link', link)]);
 }
 =======
 >>>>>>> b160368a1ca9bcd28d5ee9fcb78a133ede1b837e

@@ -81,16 +81,17 @@ app.post("/u/:userURL", function(req, res) {
 app.get("/a/:adminURL", function(req, res) {
   // TO DO: check if adminURL exists in database
   let adminURL = String(req.params.adminURL);
-
-  let bool = dbUtils.validURL(adminURL).then((queryResult) => console.log(queryResult));
-  console.log(bool);
-  dbUtils.getResults(adminURL).then( (queryResult) => {
-  res.render("poll_results", {queryResult: queryResult});
-
-  dbUtils.getResults(adminURL).then( (queryResult) => {
-    res.render("poll_results", {queryResult: queryResult});
+  dbUtils.validURL(adminURL).then(function(queryResult) {
+    if (!queryResult[0][0]) {
+      res.status(400).send("not a valid admin URL!");
+      return;
+    }
+    else {
+      dbUtils.getResults(adminURL).then( (queryResult) => {
+      res.render("poll_results", {queryResult: queryResult});
+      });
+    }
   });
-  // close db and error handle here;
 });
 
 app.post("/votes_submitted", function(req, res) {
@@ -98,9 +99,17 @@ app.post("/votes_submitted", function(req, res) {
 });
 
 app.get("/u/:participant_url", function(req, res) {
-  dbUtils.viewOptions(String(req.params.participant_url))
-  .then( (result) => {
-    res.render("take_poll", {result: result})
+  let partURL = String(req.params.participant_url);
+  dbUtils.validURL(partURL).then(function(queryResult) {
+    if (!queryResult[0][0]) {
+      res.status(400).send("not a valid participant URL!");
+      return;
+    }
+    else {
+      dbUtils.viewOptions(String(req.params.participant_url)).then( (result) => {
+      res.render("take_poll", {result: result})
+      });
+    }
   });
   // TO DO close connection and hand errors
 
