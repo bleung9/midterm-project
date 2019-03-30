@@ -10,6 +10,8 @@ const knex = require("knex")({
 });
 
 
+
+
 function getResults(adminLink) {
   return Promise.all([knex('results')
   .join('options', 'results.option_id', '=', 'options.option_id')

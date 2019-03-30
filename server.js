@@ -101,7 +101,7 @@ app.post("/votes_submitted", function(req, res) {
 // //   res.render("take_poll");
 // // });
 
-app.post("/u/:url", function(req, res) {
+app.post("/u/:userURL", function(req, res) {
   res.redirect("thanks")
 });
 
@@ -112,8 +112,9 @@ app.get("/a/:adminURL", function(req, res) {
   let adminURL = String(req.params.adminURL);
 
   qGR.getResults(adminURL).then((queryResult) => {
+    queryResult[i].rank
     res.render("poll_results", {queryResult: queryResult});
-  })
+  });
 
 });
 
