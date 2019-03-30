@@ -1,0 +1,114 @@
+[33me48fee4[m HEAD@{4 minutes ago}: checkout: moving from bosco-features to master
+[33ma70e240[m HEAD@{4 minutes ago}: commit: commiting my changes to branch before pulling A's updates to master
+[33m8145461[m HEAD@{2 hours ago}: commit: files from alexey
+[33mb199d5c[m HEAD@{2 hours ago}: checkout: moving from master to bosco-features
+[33me48fee4[m HEAD@{2 hours ago}: pull: Fast-forward
+[33m63b2e62[m HEAD@{2 hours ago}: checkout: moving from bosco-features to master
+[33mb199d5c[m HEAD@{2 hours ago}: commit: wrote borda algorithm
+[33m63b2e62[m HEAD@{3 hours ago}: merge master: Fast-forward
+[33m19477e9[m HEAD@{3 hours ago}: checkout: moving from master to bosco-features
+[33m63b2e62[m HEAD@{3 hours ago}: commit (merge): fixing a master merge conflict
+[33m19477e9[m HEAD@{3 hours ago}: merge bosco-features: Fast-forward
+[33m8e7a22b[m HEAD@{3 hours ago}: checkout: moving from bosco-features to master
+[33m19477e9[m HEAD@{3 hours ago}: commit: fixing a merge to master issue
+[33m8e7a22b[m HEAD@{3 hours ago}: merge master: Fast-forward
+[33m4441e42[m HEAD@{3 hours ago}: checkout: moving from master to bosco-features
+[33m8e7a22b[m HEAD@{3 hours ago}: pull origin master: Fast-forward
+[33m4441e42[m HEAD@{3 hours ago}: checkout: moving from bosco-features to master
+[33m4441e42[m HEAD@{4 hours ago}: checkout: moving from master to bosco-features
+[33m4441e42[m HEAD@{4 hours ago}: merge bosco-features: Fast-forward
+[33mbf7bf5a[m HEAD@{4 hours ago}: checkout: moving from bosco-features to master
+[33m4441e42[m HEAD@{4 hours ago}: commit: morning commit
+[33mb5cf257[m HEAD@{18 hours ago}: commit (merge): merge conflict fixed
+[33med1341a[m HEAD@{18 hours ago}: commit: commit file before pulling from master
+[33m8498391[m HEAD@{19 hours ago}: commit (merge): fix conflichts
+[33m6610f0a[m HEAD@{19 hours ago}: checkout: moving from master to bosco-features
+[33mbf7bf5a[m HEAD@{19 hours ago}: commit: updaates to server.js
+[33ma3cc1f6[m HEAD@{19 hours ago}: commit: barebones skeleton for routes on server.js
+[33m7bd9f1f[m HEAD@{19 hours ago}: commit: barebones skeleton for routes on server.js
+[33m49112ab[m HEAD@{20 hours ago}: commit: updating master
+[33m008f6a3[m HEAD@{20 hours ago}: merge database/autoinc_seeds: Merge made by the 'recursive' strategy.
+[33m2b4df02[m HEAD@{20 hours ago}: checkout: moving from database/autoinc_seeds to master
+[33m22aa9c7[m HEAD@{20 hours ago}: checkout: moving from master to database/autoinc_seeds
+[33m2b4df02[m HEAD@{20 hours ago}: pull: Fast-forward
+[33m35a0906[m HEAD@{20 hours ago}: checkout: moving from bosco-features to master
+[33m6610f0a[m HEAD@{20 hours ago}: commit: commit to my brnach before getting collab's stuff
+[33m896885e[m HEAD@{21 hours ago}: pull origin query/get_results: Merge made by the 'recursive' strategy.
+[33m59d0f70[m HEAD@{21 hours ago}: pull origin master: Merge made by the 'recursive' strategy.
+[33m7b8ef0c[m HEAD@{21 hours ago}: commit: minor server.js changes
+[33m35a0906[m HEAD@{21 hours ago}: checkout: moving from master to bosco-features
+[33m35a0906[m HEAD@{22 hours ago}: checkout: moving from master to master
+[33m35a0906[m HEAD@{22 hours ago}: checkout: moving from master to master
+[33m35a0906[m HEAD@{24 hours ago}: checkout: moving from bosco-features to master
+[33m35a0906[m HEAD@{24 hours ago}: merge master: Fast-forward
+[33m2139000[m HEAD@{24 hours ago}: checkout: moving from master to bosco-features
+[33m35a0906[m HEAD@{24 hours ago}: merge bosco-features: Merge made by the 'recursive' strategy.
+[33mb0575f3[m HEAD@{24 hours ago}: checkout: moving from bosco-features to master
+[33m2139000[m HEAD@{24 hours ago}: checkout: moving from master to bosco-features
+[33mb0575f3[m HEAD@{24 hours ago}: pull origin master: Fast-forward
+[33ma6f83c8[m HEAD@{24 hours ago}: checkout: moving from bosco-features to master
+[33m2139000[m HEAD@{24 hours ago}: commit: added skeleton for a few routes
+[33ma6f83c8[m HEAD@{24 hours ago}: checkout: moving from master to bosco-features
+[33ma6f83c8[m HEAD@{27 hours ago}: checkout: moving from bosco-features to master
+[33ma6f83c8[m HEAD@{27 hours ago}: checkout: moving from master to bosco-features
+[33ma6f83c8[m HEAD@{27 hours ago}: merge bosco-features: Fast-forward
+[33m0d492f5[m HEAD@{27 hours ago}: checkout: moving from bosco-features to master
+[33ma6f83c8[m HEAD@{27 hours ago}: checkout: moving from master to bosco-features
+[33m0d492f5[m HEAD@{27 hours ago}: checkout: moving from bosco-features to master
+[33ma6f83c8[m HEAD@{27 hours ago}: commit: file reorg
+[33m0d492f5[m HEAD@{27 hours ago}: pull origin master: Fast-forward
+[33m1ec42fb[m HEAD@{27 hours ago}: checkout: moving from master to bosco-features
+[33m0d492f5[m HEAD@{27 hours ago}: commit: more file reorgzanition
+[33m31a975c[m HEAD@{27 hours ago}: pull origin master: Merge made by the 'recursive' strategy.
+[33m1ec42fb[m HEAD@{27 hours ago}: checkout: moving from bosco-features to master
+[33m1ec42fb[m HEAD@{27 hours ago}: checkout: moving from master to bosco-features
+[33m1ec42fb[m HEAD@{27 hours ago}: checkout: moving from cleanup/mv_files to master
+[33m1ec42fb[m HEAD@{27 hours ago}: checkout: moving from master to cleanup/mv_files
+[33m1ec42fb[m HEAD@{27 hours ago}: merge bosco-features: Fast-forward
+[33m5e05ff2[m HEAD@{27 hours ago}: checkout: moving from bosco-features to master
+[33m1ec42fb[m HEAD@{27 hours ago}: checkout: moving from bosco-features to bosco-features
+[33m1ec42fb[m HEAD@{27 hours ago}: commit: file reorganization
+[33m5e05ff2[m HEAD@{27 hours ago}: pull origin master: Fast-forward
+[33m8271fed[m HEAD@{27 hours ago}: checkout: moving from master to bosco-features
+[33m5e05ff2[m HEAD@{27 hours ago}: commit: fixed reference to scripts filepath
+[33m8271fed[m HEAD@{27 hours ago}: checkout: moving from bosco-features to master
+[33m8271fed[m HEAD@{28 hours ago}: pull origin master: Fast-forward
+[33m60c2d43[m HEAD@{28 hours ago}: checkout: moving from master to bosco-features
+[33m8271fed[m HEAD@{28 hours ago}: commit: removed redundant html files
+[33m60c2d43[m HEAD@{28 hours ago}: checkout: moving from bosco-features to master
+[33m60c2d43[m HEAD@{28 hours ago}: checkout: moving from master to bosco-features
+[33m60c2d43[m HEAD@{28 hours ago}: merge bosco-features: Fast-forward
+[33m04fce73[m HEAD@{28 hours ago}: checkout: moving from master to master
+[33m04fce73[m HEAD@{28 hours ago}: checkout: moving from bosco-features to master
+[33m60c2d43[m HEAD@{28 hours ago}: checkout: moving from master to bosco-features
+[33m04fce73[m HEAD@{28 hours ago}: checkout: moving from bosco-features to master
+[33m60c2d43[m HEAD@{28 hours ago}: commit: added the poll_submitted route, to retrieve data from the poll creation form
+[33m79b9622[m HEAD@{28 hours ago}: merge cleanup/scss_take_poll: Fast-forward
+[33m3e128b7[m HEAD@{28 hours ago}: checkout: moving from cleanup/scss_take_poll to bosco-features
+[33m79b9622[m HEAD@{28 hours ago}: checkout: moving from bosco-features to cleanup/scss_take_poll
+[33m3e128b7[m HEAD@{28 hours ago}: checkout: moving from scss/take_poll to bosco-features
+[33m79b9622[m HEAD@{28 hours ago}: pull origin cleanup/scss_take_poll: Fast-forward
+[33m3e128b7[m HEAD@{28 hours ago}: checkout: moving from bosco-features to scss/take_poll
+[33m3e128b7[m HEAD@{28 hours ago}: merge cleanup/scss_homepage: Fast-forward
+[33m2bcc662[m HEAD@{28 hours ago}: checkout: moving from cleanup/scss_homepage to bosco-features
+[33m3e128b7[m HEAD@{29 hours ago}: pull origin cleanup/scss_homepage: Fast-forward
+[33m04fce73[m HEAD@{29 hours ago}: checkout: moving from master to cleanup/scss_homepage
+[33m04fce73[m HEAD@{2 days ago}: merge bosco-features: Merge made by the 'recursive' strategy.
+[33m6257a87[m HEAD@{2 days ago}: pull origin master: Fast-forward
+[33mef4d7e5[m HEAD@{2 days ago}: merge basics/database_init: Fast-forward
+[33m18d8a27[m HEAD@{2 days ago}: checkout: moving from basics/database_init to master
+[33mef4d7e5[m HEAD@{2 days ago}: checkout: moving from bosco-features to basics/database_init
+[33m2bcc662[m HEAD@{2 days ago}: checkout: moving from ef4d7e56c0eac8e6af8041325a353a89bbe1269f to bosco-features
+[33mef4d7e5[m HEAD@{2 days ago}: checkout: moving from bosco-features to origin/basics/database_init
+[33m2bcc662[m HEAD@{2 days ago}: checkout: moving from features/html to bosco-features
+[33me770544[m HEAD@{2 days ago}: checkout: moving from bosco-features to features/html
+[33m2bcc662[m HEAD@{2 days ago}: commit: made changes to server to try to get submit button working, but it doesn't work at the momemt
+[33m3ca3081[m HEAD@{2 days ago}: checkout: moving from bosco-features to bosco-features
+[33m3ca3081[m HEAD@{2 days ago}: commit (merge): resolve conflict
+[33m6b013ef[m HEAD@{2 days ago}: checkout: moving from features/html to bosco-features
+[33me770544[m HEAD@{2 days ago}: commit: made a mistake with git, so committing some of my files to tess' branch that won't break her stuff
+[33meaee9ba[m HEAD@{2 days ago}: checkout: moving from bosco-features to features/html
+[33m6b013ef[m HEAD@{2 days ago}: commit: CREATED: skeleton of routes. barda algo. random url generator
+[33m18d8a27[m HEAD@{2 days ago}: checkout: moving from master to bosco-features
+[33m18d8a27[m HEAD@{3 days ago}: commit: push package.json file - has a new script for windows npm run local-w
+[33m9119bd9[m HEAD@{3 days ago}: clone: from https://github.com/lighthouse-labs/node-skeleton

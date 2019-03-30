@@ -16,7 +16,7 @@ const knexLogger  = require('knex-logger');
 const random_url_gen = require('./public/scripts/random_url_gen');
 const vO = require('./knex_view_options');
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+// const usersRoutes = require("./routes/users");
 const pollRoutes = require("./routes/polls");
 const dbUtils = require("./db-utils");
 
@@ -40,10 +40,6 @@ app.use("/styles", sass({
 
 app.use(express.static("public"));
 
-// Mount all resource routes
-// DO WE NEED THIS ? ? ? I don't think so
-app.use("/api/users", usersRoutes(knex));
-
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
@@ -53,15 +49,19 @@ app.get("/", (req, res) => {
 app.post("/poll_submitted", function(req, res) {
   let admin_link = random_url_gen();
   let participant_link = random_url_gen();
-  let templateVars = {admin_link: admin_link,
+
+  // ERROR IF ONLY ONE POLL QUESTION SUBMITTED
+  // because params title is entry instead of array
+  let submitLink = {admin_link: admin_link,
                       participant_link: participant_link,
                       poll_question: req.body.question,
                       creator_email: req.body.email,
                       title: req.body.title,
                       description: req.body.description};
-  // create_poll(templateVars);
 
-  console.log(templateVars);
+  dbUtils.createPoll(submitLink).then( () => {
+    res.render("poll_submitted", {admin_link: admin_link, participant_link: participant_link});
+  });
 
   //NEED TO INSERT THIS SUBMISSION DATA AND URL INTO DATABASE!!!!!!
 
@@ -81,10 +81,14 @@ app.post("/u/:userURL", function(req, res) {
 app.get("/a/:adminURL", function(req, res) {
   // TO DO: check if adminURL exists in database
   let adminURL = String(req.params.adminURL);
+
   let bool = dbUtils.validURL(adminURL).then((queryResult) => console.log(queryResult));
   console.log(bool);
   dbUtils.getResults(adminURL).then( (queryResult) => {
   res.render("poll_results", {queryResult: queryResult});
+
+  dbUtils.getResults(adminURL).then( (queryResult) => {
+    res.render("poll_results", {queryResult: queryResult});
   });
   // close db and error handle here;
 });

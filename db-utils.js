@@ -9,10 +9,13 @@ const knex = require("knex")({
   }
 });
 
+<<<<<<< HEAD
 function validURL(link) {
   console.log("validURL running");
   return Promise.all([knex('polls').where(link, 'polls.admin_link').orWhere(link, 'polls.participant_link')]);
 }
+=======
+>>>>>>> b160368a1ca9bcd28d5ee9fcb78a133ede1b837e
 
 function getResults(adminLink) {
   return Promise.all([
@@ -30,24 +33,30 @@ function viewOptions(participantLink) {
 }
 
 
-// add poll JS
-// test this works !!
 function createPoll(submitForm) {
-  return Promise.all([
-    knex('polls').insert({
-      admin_link: submitForm.admin_link,
-      participant_link: submitForm.voter_link,
-      poll_question: submitForm.question,
-      creator_email: submitForm.email
-    })
-    .then(function () {
-      let optionsToInsert = submitForm.title.map((x, index) => ({admin_link: submitForm.admin_link, option_text: x, option_description: submitForm.description[index]}))
-      for (let i = 0; i < optionsToInsert.length; i++) {
-        knex('options').insert(optionsToInsert[i]).then();
-      }
-    })
-  ]);
-};
+  let firstInsert = knex('polls').insert({
+    admin_link: submitForm.admin_link,
+    participant_link: submitForm.participant_link,
+    poll_question: submitForm.poll_question,
+    creator_email: submitForm.creator_email
+  });
+
+  let optionsToInsert = submitForm.title.map( (x, index) => ({
+    admin_link: submitForm.admin_link,
+    option_text: x,
+    option_description: submitForm.description[index]})
+  );
+
+  let secondaryInserts = [];
+
+  optionsToInsert.forEach( (option) => {
+    secondaryInserts.push(knex('options').insert(option));
+  });
+
+  return firstInsert.then( () => {
+    Promise.all(secondaryInserts);
+  });
+}
 
 // createPoll({ admin_link: 'g839001', voter_link: 'assdh', question: 'How are you?', email: 'test@test.com', title: ['hello', 'hi', 'hey'], description: ['testing', "two", "three"]});
 
@@ -55,8 +64,14 @@ function createPoll(submitForm) {
 
 
 module.exports = {
+<<<<<<< HEAD
   validURL: validURL,
   viewOptions: viewOptions,
   getResults: getResults,
   createPoll: createPoll,
+=======
+  viewOptions: viewOptions,
+  getResults: getResults,
+  createPoll: createPoll
+>>>>>>> b160368a1ca9bcd28d5ee9fcb78a133ede1b837e
   };
