@@ -10,13 +10,10 @@ const knex = require("knex")({
 });
 
 function viewOptions(participantLink) {
-  return knex('options')
+  return Promise.all([knex('options')
   .join('polls', 'options.admin_link', '=', 'polls.admin_link')
   .select('option_text', 'option_description', 'poll_question')
-  .where('polls.participant_link', participantLink)
-  .then(function(rows) {
-    return rows;
-  })
+  .where('polls.participant_link', participantLink)]);
 }
 
 module.exports = {viewOptions: viewOptions}

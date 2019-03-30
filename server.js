@@ -77,10 +77,9 @@ app.post("/votes_submitted", function(req, res) {
 });
 
 app.get("/u/:participant_url", function(req, res) {
-  (async () => {
-    let result = await vO.viewOptions(String(req.params.participant_url));
+  vO.viewOptions(String(req.params.participant_url)).then((result) => {
     res.render("take_poll", {result: result});
-  })()
+  });
   //check if userURL exists in database
 });
 
