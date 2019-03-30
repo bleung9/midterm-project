@@ -73,6 +73,7 @@ app.post("/poll_submitted", function(req, res) {
 // //   //check if userURL exists in database
 // //   res.render("take_poll");
 // // });
+});
 
 app.post("/u/:userURL", function(req, res) {
   res.redirect("thanks")
