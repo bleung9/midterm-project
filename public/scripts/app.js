@@ -28,10 +28,36 @@ $(document).ready(function() {
 
   $("#submit").click(function(event) {
     event.preventDefault();
+    let arr = $(".mandatory").toArray();
+    console.log(arr);
+    for (i = 0; i < arr.length; i++) {
+      console.log($(arr[i]).val());
+      if ($(arr[i]).val() === "") {
+        alert("Please ensure all mandatory fields have been filled in!");
+        return;
+      }
+    }
     let data = $("#submit-form").serialize();
-    console.log(data);
-    $.post("/poll_submitted", data);
-  });
+    // $.ajax('/polls_submitted', {method: "POST"}).then(function(data) {
+    //   console.log(data);
+    // });
+    // $.post("/poll_submitted", data);
 
+    $.ajax({
+          type: 'POST',
+          // url: "http://localhost:8080/poll_submitted",
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'json',
+          data: JSON.stringify(data),
+          success: function (result) {
+            console.log(result);
+            console.log('hi');
+            window.location.replace("/poll_submitted");
+          },
+          error: function(err) {
+            console.log(err);
+          }
+        });
+    });
 });
 
