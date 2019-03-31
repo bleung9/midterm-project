@@ -141,7 +141,6 @@ app.get("/u/:participant_url", function(req, res) {
     }
     else {
       dbUtils.viewOptions(String(req.params.participant_url)).then( (result) => {
-        console.log(result);
         res.render("take_poll", {result: result});
       });
     }
@@ -157,10 +156,17 @@ app.get("/u/:participant_url", function(req, res) {
 });
 
 app.post("/u/:participant_url", function(req, res) {
-  console.log(req);
-  res.redirect("thanks");
-/*  res.redirect("/thanks");
-*/});
+  let body = req.body;
+  console.log(body);
+/*  console.log(res);
+  res.*/
+  // res.redirect("/thanks");
+  res.send({});
+});
+
+app.get("/thanks", function(req, res) {
+  res.render("thanks");
+});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
