@@ -105,7 +105,13 @@ app.get("/a/:adminURL", function(req, res) {
     else {
       dbUtils.getResults(adminURL).then( (queryResult) => {
       let borda_results = borda.borda(queryResult);
-      res.render("poll_results", {borda_results: borda_results});
+      let aggregated = 0;
+      for (i = 0; i < borda_results.length; i++) {
+        aggregated += borda_results[i][1];
+      }
+      let denom = (borda_results.length * (borda_results.length + 1)) / 2;
+      let number_of_voters = aggregated / denom;
+      res.render("poll_results", {borda_results: borda_results, number_of_voters: number_of_voters});
       });
     }
   });
