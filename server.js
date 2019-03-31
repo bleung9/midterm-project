@@ -102,6 +102,7 @@ app.get("/a/:adminURL", function(req, res) {
     }
     else {
       dbUtils.getResults(adminURL).then( (queryResult) => {
+      mailgun.sendEmail(req.body.email, admin_link, participant_link);
       res.render("poll_results", {queryResult: queryResult});
       });
     }
