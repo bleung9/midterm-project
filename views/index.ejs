@@ -4,6 +4,7 @@
     <!-- Meta Information -->
     <title>Pikachoose - Home Page</title>
 
+    <link rel="stylesheet" type="text/css" href="/vendor/normalize-4.1.1.css">
     <link rel="stylesheet" type="text/css" href="/styles/homepage.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,21 +19,20 @@
 
     <!-- Main Container -->
     <main class="content-container">
-      <section>
-        <h1>Welcome</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+        <h1 id="homepage-title">Welcome</h1>
+        <p class="welcome-message">Pikachoose lets your friends help you reach a decision in an easy and simple way. Just enter your
+        question and options below and send it out!</p>
         <hr>
-      </section>
+
 
         <!-- Poll Question and User Email -->
       <form class="block" id="submit-form">
 
         <section id="poll">
-          <h3>Please Enter Your Question:</h3>
+          <h3>Ask Your Question:</h3>
           <input id="make-question" class="mandatory" name="question" placeholder="What question would you like to ask?"></textarea>
-          <h3>Please Enter Your Email:</h3>
-          <!-- Textarea will need to have email input type when form added -->
-          <input id="add-email" class="mandatory" name="email" placeholder="example@example.com"></textarea>
+
           <hr>
 
           <!-- Poll Options -->
@@ -52,7 +52,12 @@
           </div>
 
           <div id="two-buttons">
-            <button type="button" class="main-button" value="Add" id="add">Add option</button>
+            <button type="button" class="main-button" value="Add" id="add">New Option</button>
+
+
+            <h3>Please Enter Your Email:</h3>
+            <!-- Textarea will need to have email input type when form added -->
+            <input id="add-email" class="mandatory" name="email" placeholder="example@example.com"></textarea>
             <button type="submit" class="main-button" id="submit">Submit</button>
           </div>
         </section>
