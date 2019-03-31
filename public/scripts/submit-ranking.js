@@ -1,14 +1,6 @@
 $(document).ready( function() {
 
   function getRankPairs() {
-    var rankPairs = [];
-    $( ".ranked-list-element").each(function(idx) {
-      rankPairs.push([parseInt($(this).attr('option_id')), idx+1]);
-    })
-    return rankPairs;
-  }
-
-  function getRankPairsDual() {
     var optionIDs = [];
     var ranks = [];
     $( ".ranked-list-element").each(function(idx) {
@@ -21,7 +13,7 @@ $(document).ready( function() {
   $("#submit-button").click( function(event) {
     event.preventDefault();
     var participant_name = $("input").val();
-    var rankPairs = getRankPairsDual();
+    var rankPairs = getRankPairs();
 /*    var dataFields = rankPairs.map(function(pair) {
       return pair.push(participant_name);
     });*/
