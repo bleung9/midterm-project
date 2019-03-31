@@ -78,6 +78,7 @@ app.post("/poll_submitted", function(req, res) {
                       description: req.body.description};
   console.log(req.body);
   dbUtils.createPoll(submitLink).then( () => {
+    mailgun.sendEmail(req.body.email, admin_link, participant_link);
     res.render("poll_submitted", {admin_link: admin_link, participant_link: participant_link});
   });
 });
