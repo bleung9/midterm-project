@@ -141,7 +141,8 @@ app.get("/u/:participant_url", function(req, res) {
     }
     else {
       dbUtils.viewOptions(String(req.params.participant_url)).then( (result) => {
-      res.render("take_poll", {result: result})
+        console.log(result);
+        res.render("take_poll", {result: result});
       });
     }
   });
@@ -156,9 +157,10 @@ app.get("/u/:participant_url", function(req, res) {
 });
 
 app.post("/u/:participant_url", function(req, res) {
-  res.redirect("thanks")
-});
-
+  console.log(req);
+  res.redirect("thanks");
+/*  res.redirect("/thanks");
+*/});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
