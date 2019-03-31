@@ -9,10 +9,9 @@ const knex = require("knex")({
   }
 });
 
-
 function submitVote(result) {
-  return Promise.all([knex('polls').distinct().join('results', 'results.admin_link', '=', 'polls.admin_link').select('results.admin_link').where('polls.participant_link', result.participant_link)]).then(function(admin_link) {
-    console.log("admin link: ", admin_link[0][0].admin_link);
+  return Promise.all([knex('polls').distinct().select('polls.admin_link').where('polls.participant_link', result.participant_link)]).then(function(admin_link) {
+    console.log("admin link: ", admin_link[0][0]);
     console.log("result:", result);
     for (i = 0; i < result.vote_data.ranks.length; i++) {
       Promise.all([knex('results').insert({
@@ -34,6 +33,10 @@ function validURL(link, p_or_a) {
   }
 }
 
+//note that if no one has voted on a poll, this will fail, b/c no results for that poll
+//will exist in this table, hence when I try to load the admin page for a given URL,
+//nothing will be returned by this knex query, b/c I'm searching for an admin_link
+//that would only exist if someone has voted.
 function getResults(adminLink) {
   return Promise.all([
     knex('results').join('options', 'results.option_id', '=', 'options.option_id')

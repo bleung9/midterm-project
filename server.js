@@ -18,7 +18,7 @@ const vO = require('./knex_view_options');
 // Seperated Routes for each Resource
 // const usersRoutes = require("./routes/users");
 const pollRoutes = require("./routes/polls");
-const mailgun = require('./test-mailgun.js')
+// const mailgun = require('./test-mailgun.js')
 const dbUtils = require("./db-utils");
 const borda = require("./borda");
 
@@ -78,7 +78,7 @@ app.post("/poll_submitted", function(req, res) {
                       title: submit_title,
                       description: req.body.description};
   dbUtils.createPoll(submitLink).then( () => {
-    mailgun.sendEmail(req.body.email, admin_link, participant_link);
+    // mailgun.sendEmail(req.body.email, admin_link, participant_link);
     res.send({admin_link:admin_link, participant_link:participant_link});
   });
 });
@@ -103,15 +103,19 @@ app.get("/a/:adminURL", function(req, res) {
     }
     else {
       dbUtils.getResults(adminURL).then( (queryResult) => {
-      let borda_results = borda.borda(queryResult);
-      console.log("borda results", borda_results);
-      let aggregated = 0;
-      for (i = 0; i < borda_results.length; i++) {
-        aggregated += borda_results[i][1];
-      }
-      let denom = (borda_results.length * (borda_results.length + 1)) / 2;
-      let number_of_voters = aggregated / denom;
-      res.render("poll_results", {borda_results: borda_results, number_of_voters: number_of_voters});
+        console.log("queryResult", queryResult);
+        let borda_results = borda.borda(queryResult);
+        console.log("borda results", borda_results);
+        let aggregated = 0;
+        for (i = 0; i < borda_results.length; i++) {
+          aggregated += borda_results[i][1];
+        }
+        let denom = (borda_results.length * (borda_results.length + 1)) / 2;
+        let number_of_voters = aggregated / denom;
+        if (isNaN(number_of_voters)) {
+          number_of_voters = 0;
+        }
+        res.render("poll_results", {borda_results: borda_results, number_of_voters: number_of_voters});
       });
     }
   });
@@ -121,8 +125,7 @@ app.post("/votes_submitted", function(req, res) {
   console.log("ugh");
   console.log(req.params.participant_url);
   console.log(req.body);
-  dbUtils.submitVote({vote_data: req.body, participant_link: req.params.participant_url});
-  res.render("thanks");
+  dbUtils.submitVote({vote_data: req.body, participant_link: req.params.participant_url}).then(res.render("thanks"));
 });
 
 app.get("/u/:participant_url", function(req, res) {

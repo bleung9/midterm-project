@@ -32,6 +32,7 @@
 
 function borda(rows) {
   let votes = rows[0];
+  console.log("rows", rows);
   console.log("votes", votes);
   console.log("votes.length", votes.length);
   let tally = {};
@@ -57,9 +58,11 @@ function borda(rows) {
   let arr = Object.keys(tally).map(function(key) {
     return [key, tally[key]];
   });
+  console.log(arr);
   let sorted = arr.sort(function(a, b) {
     return b[1] - a[1];
   });
+  console.log(sorted);
 
   for (i = 0; i < sorted.length; i++) {
     for (let element in text_to_des) {
@@ -69,16 +72,19 @@ function borda(rows) {
       }
     }
   }
+  console.log("sorted:", sorted);
 
   //push a value of true into the arrays denoting the top ranked choice(s)
-  let max = sorted[0][1];
-  sorted[0].push(true);
-  for (i = 1; i < sorted.length; i++) {
-    if (max > sorted[i][1]) {
-      break;
-    }
-    else {
-      sorted[i].push(true);
+  if (sorted.length !== 0) {
+    let max = sorted[0][1];
+    sorted[0].push(true);
+    for (i = 1; i < sorted.length; i++) {
+      if (max > sorted[i][1]) {
+        break;
+      }
+      else {
+        sorted[i].push(true);
+      }
     }
   }
   console.log(sorted);
