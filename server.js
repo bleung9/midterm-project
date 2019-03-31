@@ -18,7 +18,7 @@ const vO = require('./knex_view_options');
 // Seperated Routes for each Resource
 // const usersRoutes = require("./routes/users");
 const pollRoutes = require("./routes/polls");
-const mailgun = require('./test-mailgun.js')
+// const mailgun = require('./test-mailgun.js')
 const dbUtils = require("./db-utils");
 
 
