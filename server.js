@@ -125,7 +125,7 @@ app.post("/votes_submitted", function(req, res) {
   console.log("ugh");
   console.log(req.params.participant_url);
   console.log(req.body);
-  dbUtils.submitVote({vote_data: req.body, participant_link: req.params.participant_url}).then(res.render("thanks"));
+  dbUtils.submitVote({vote_data: req.body, participant_link: req.params.participant_url}).then(res.send("thanks"));
 });
 
 app.get("/u/:participant_url", function(req, res) {
