@@ -18,7 +18,7 @@ const vO = require('./knex_view_options');
 // Seperated Routes for each Resource
 // const usersRoutes = require("./routes/users");
 const pollRoutes = require("./routes/polls");
-// const mailgun = require('./test-mailgun.js')
+const mailgun = require('./test-mailgun.js')
 const dbUtils = require("./db-utils");
 const borda = require("./borda");
 
@@ -77,10 +77,9 @@ app.post("/poll_submitted", function(req, res) {
                       creator_email: req.body.email,
                       title: submit_title,
                       description: req.body.description};
-  console.log(req.body);
   dbUtils.createPoll(submitLink).then( () => {
     mailgun.sendEmail(req.body.email, admin_link, participant_link);
-    res.render("poll_submitted", {admin_link: admin_link, participant_link: participant_link});
+    res.send({admin_link:admin_link, participant_link:participant_link});
   });
 });
 

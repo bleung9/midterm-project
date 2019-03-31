@@ -38,26 +38,9 @@ $(document).ready(function() {
       }
     }
     let data = $("#submit-form").serialize();
-    // $.ajax('/polls_submitted', {method: "POST"}).then(function(data) {
-    //   console.log(data);
-    // });
-    // $.post("/poll_submitted", data);
-
-    $.ajax({
-          type: 'POST',
-          // url: "http://localhost:8080/poll_submitted",
-          contentType: 'application/json; charset=utf-8',
-          dataType: 'json',
-          data: JSON.stringify(data),
-          success: function (result) {
-            console.log(result);
-            console.log('hi');
-            window.location.replace("/poll_submitted");
-          },
-          error: function(err) {
-            console.log(err);
-          }
-        });
+    $.post("/poll_submitted", data).then(function(result) {
+      console.log(result);
+      $('#two-buttons').append('</br><a href="http://localhost:8080/a/' + result.admin_link + '">Your admin link</a></br><a href="http://localhost:8080/u/' + result.participant_link + '">Your participant link</a>');
     });
+  });
 });
-
