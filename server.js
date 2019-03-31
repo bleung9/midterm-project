@@ -20,6 +20,7 @@ const vO = require('./knex_view_options');
 const pollRoutes = require("./routes/polls");
 const mailgun = require('./test-mailgun.js')
 const dbUtils = require("./db-utils");
+const borda = require("./borda");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -95,26 +96,38 @@ app.post("/poll_submitted", function(req, res) {
 app.get("/a/:adminURL", function(req, res) {
   // TO DO: check if adminURL exists in database
   let adminURL = String(req.params.adminURL);
-  dbUtils.validURL(adminURL).then(function(queryResult) {
+  dbUtils.validURL(adminURL, "a").then(function(queryResult) {
     if (!queryResult[0][0]) {
       res.status(400).send("not a valid admin URL!");
       return;
     }
     else {
       dbUtils.getResults(adminURL).then( (queryResult) => {
-      res.render("poll_results", {queryResult: queryResult});
+      let borda_results = borda.borda(queryResult);
+      console.log("borda results", borda_results);
+      let aggregated = 0;
+      for (i = 0; i < borda_results.length; i++) {
+        aggregated += borda_results[i][1];
+      }
+      let denom = (borda_results.length * (borda_results.length + 1)) / 2;
+      let number_of_voters = aggregated / denom;
+      res.render("poll_results", {borda_results: borda_results, number_of_voters: number_of_voters});
       });
     }
   });
 });
 
 app.post("/votes_submitted", function(req, res) {
+  console.log("ugh");
+  console.log(req.params.participant_url);
+  console.log(req.body);
+  dbUtils.submitVote({vote_data: req.body, participant_link: req.params.participant_url});
   res.render("thanks");
 });
 
 app.get("/u/:participant_url", function(req, res) {
   let partURL = String(req.params.participant_url);
-  dbUtils.validURL(partURL).then(function(queryResult) {
+  dbUtils.validURL(partURL, "p").then(function(queryResult) {
     if (!queryResult[0][0]) {
       res.status(400).send("not a valid participant URL!");
       return;
@@ -136,12 +149,10 @@ app.get("/u/:participant_url", function(req, res) {
 });
 
 app.post("/u/:participant_url", function(req, res) {
-  let body = req.body;
-  console.log(body);
-/*  console.log(res);
-  res.*/
-  // res.redirect("/thanks");
-  res.send({});
+  console.log("ugh");
+  console.log(req.params.participant_url);
+  console.log(req.body);
+  dbUtils.submitVote({vote_data: req.body, participant_link: req.params.participant_url}).then(() => res.send());
 });
 
 app.get("/thanks", function(req, res) {

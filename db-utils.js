@@ -10,8 +10,28 @@ const knex = require("knex")({
 });
 
 
-function validURL(link) {
-  return Promise.all([knex('polls').where('polls.admin_link', link).orWhere('polls.participant_link', link)]);
+function submitVote(result) {
+  return Promise.all([knex('polls').distinct().join('results', 'results.admin_link', '=', 'polls.admin_link').select('results.admin_link').where('polls.participant_link', result.participant_link)]).then(function(admin_link) {
+    console.log("admin link: ", admin_link[0][0].admin_link);
+    console.log("result:", result);
+    for (i = 0; i < result.vote_data.ranks.length; i++) {
+      Promise.all([knex('results').insert({
+        admin_link: admin_link[0][0].admin_link,
+        option_id: result.vote_data.optionIDs[i],
+        rank: result.vote_data.ranks[i],
+        participant_name: result.participant_name
+      })]);
+    }
+  });
+}
+
+function validURL(link, p_or_a) {
+  if (p_or_a === "p") {
+    return Promise.all([knex('polls').where('polls.participant_link', link)]);
+  }
+  else {
+    return Promise.all([knex('polls').where('polls.admin_link', link)]);
+  }
 }
 
 function getResults(adminLink) {
@@ -61,7 +81,7 @@ function createPoll(submitForm) {
 
 
 module.exports = {
-
+  submitVote: submitVote,
   validURL: validURL,
   viewOptions: viewOptions,
   getResults: getResults,
