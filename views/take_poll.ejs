@@ -6,14 +6,26 @@
 
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="/vendor/jquery-3.0.0.js"></script>
       <script src="/vendor/jquery-ui.min.js"></script>
 
-<!--       <link rel="stylesheet" href="vendor/normalize-4.1.1.css" type="text/css" /> -->
+      <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
       <link rel="stylesheet" type="text/css" href="/styles/take_poll.css">
+<!--       <link rel="stylesheet" type="text/css" href="jquery-ui.theme.css">
+      <link rel="stylesheet" type="text/css" href="jquery-ui.structure.css"> -->
 
       <script src="/scripts/submit-ranking.js"></script>
-    </head>
+
+      <script>
+        $( function() {
+          $( "#sortable" ).sortable({
+            placeholder: "ui-state-highlight"
+          });
+          $( "#sortable" ).disableSelection();
+        } );
+      </script>
+
+  </head>
   <body>
 
     <!-- Top nav bar -->
@@ -33,29 +45,29 @@
     <section id="options" class="row">
       <h3>Please Drag These Options to Rank Them in Order of Preference:</h3>
       <!-- Article container that options will be populated in. Note the draggable tag may need to be changed depending on requirements of drag and drop -->
-    <form method="POST" action="/votes_submitted">
+    <form id="submit-rank-form" method="POST" action="/votes_submitted">
       <article id="drag_options">
-        <span>
-          <div id="reorder-slot-0" class="slot"></div>
+        <ul id="sortable">
           <%  result[0].forEach( (element, idx) => { %>
-            <% var deadboltID = "deadbolt-"+(idx+1); %>
-            <% var reorderID = "reorder-slot-" + (idx+1); %>
 
-            <div id= <%= deadboltID %> class="deadbolt" >
+          <li class="ranked-list-element" option_id=<%= element.option_id %> >
 
-              <div class="question"
-                text= <%= element.option_text %>
-                description= <%= element.option_description %>
-                option_id= <%=element.option_id%> >
-              </div>
-
-              Poll Option: <%= element.option_text %> | Description: <%= element.option_description | idx %>
+            <div class="option-text">
+              <%= element.option_text %>
             </div>
 
-            <div id= <%= reorderID %> class="slot"></div>
-          <% }) %>
-        </span>
+            <div class="option-description">
+              <%= element.option_description %>
+            </div>
+
+          </li>
+          <% }); %>
+        </ul>
       </article>
+      <div class="form-group">
+        <label for="description">(Optional) Tell us your name! </label>
+        <input type="text" class="form-control" placeholder="Enter Optional Description Here" name="participant_name"/>
+      </div>
     </section>
     <div id="submit-button" class="row">
       <input type="submit" class="btn btn-primary" value="Submit"/>
