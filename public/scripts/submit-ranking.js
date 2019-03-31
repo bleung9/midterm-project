@@ -8,28 +8,38 @@ $(document).ready( function() {
     return rankPairs;
   }
 
+  function getRankPairsDual() {
+    var optionIDs = [];
+    var ranks = [];
+    $( ".ranked-list-element").each(function(idx) {
+      optionIDs.push( parseInt($(this).attr('option_id')) );
+      ranks.push(idx+1);
+    })
+    return {optionIDs: optionIDs, ranks: ranks}
+  }
+
   $("#submit-button").click( function(event) {
     event.preventDefault();
     var participant_name = $("input").val();
-    var rankPairs = getRankPairs();
-    var dataFields = rankPairs.map(function(pair) {
+    var rankPairs = getRankPairsDual();
+/*    var dataFields = rankPairs.map(function(pair) {
       return pair.push(participant_name);
-    });
+    });*/
+
+
+    rankPairs.participant_name = participant_name;
 
     $.ajax({
       type: 'POST',
-/*      url: '/',*/
-      contentType: 'application/json; charset=utf-8',
       dataType: 'json',
-      data: rankPairs,
-      success: function (result) {
-        console.log(result);
-        console.log('hi');
-        window.location.href = response.redirect;
-      }
-      error: function(err) {
-        console.log(err);
-      }
+      data: rankPairs // {key: "BIG STUPID STRING HERE IT IS LOOOK AT HOW STUPID IT IS THIS DUMB STUPID STRING"}
+    })
+    .done( function(result) {
+      console.log('success');
+      window.location.replace("../thanks");
+    })
+    .fail( function() {
+      console.log('neppers');
     });
 
   });
