@@ -49,7 +49,6 @@ function viewOptions(participantLink) {
   .where('polls.participant_link', participantLink)]);
 }
 
-
 function createPoll(submitForm) {
   let firstInsert = knex('polls').insert({
     admin_link: submitForm.admin_link,
