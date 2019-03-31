@@ -20,6 +20,7 @@ const vO = require('./knex_view_options');
 const pollRoutes = require("./routes/polls");
 // const mailgun = require('./test-mailgun.js')
 const dbUtils = require("./db-utils");
+const borda = require("./borda");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -103,7 +104,8 @@ app.get("/a/:adminURL", function(req, res) {
     }
     else {
       dbUtils.getResults(adminURL).then( (queryResult) => {
-      res.render("poll_results", {queryResult: queryResult});
+      let borda_results = borda.borda(queryResult);
+      res.render("poll_results", {borda_results: borda_results});
       });
     }
   });

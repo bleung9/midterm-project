@@ -9,6 +9,8 @@
 
       <link rel="stylesheet" type="text/css" href="/styles/results_page.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script type="text/javascript" src="/scripts/app.js"></script>
+
   </head>
   <body>
 
@@ -20,7 +22,7 @@
       <section class="row">
         <h1>Poll Results</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <h3 class="row"># of people who took poll.</h3>
+        <h3 class="row"># of people who took poll: <%= borda_results.length %></h3>
         <hr>
       </section>
 
@@ -28,10 +30,10 @@
     <section id="options" class="row">
       <!-- Article container that options will be populated in. -->
       <h3>Results:</h3>
-      <% queryResult.forEach((x) => { %>
-      <div>rank: <%= x.rank %> </div>
-      <div>options:<%= x.option_text %> </div>
-      <div>option description: <%= x.option_description %> </div>
+      <% borda_results.forEach((x) => { %>
+      <div>rank: <%= x[1] %> </div>
+      <div>options:<%= x[2] %> </div>
+      <div>option description: <%= x[3] %> </div>
     <% }) %>
 
       <article id="drag_options">
