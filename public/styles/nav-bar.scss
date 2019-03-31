@@ -1,11 +1,25 @@
-#nav-bar {
-  background-color: #3D98FF;
-  position: fixed;
-  height: 80px;
+@import "../vendor/bootstrap/scss/bootstrap";
+
+.nav-bar {
+  background-color: saturate(lighten($yellow, 11%), 30%);
+  height: 5rem;
   width: 100%;
+  @include make-container();
 }
 
-#nav-bar .logo {
-  height: 100px;
-  width: 100px;
+.nav-bar-brand {
+  @include make_row();
+  height: 1em;
+}
+
+#logo {
+  height: 5rem;
+  width: 5rem;
+}
+
+.title {
+  color: $gray-700;
+  font-size: 3rem;
+  font: $font-family-sans-serif;
+  margin-left: 3rem;
 }

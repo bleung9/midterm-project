@@ -1,20 +1,73 @@
-.container-main-text {
-  display:flex;
+@import "../vendor/bootstrap/scss/bootstrap";
+
+.content-container {
+  @include make-container();
+  display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   flex-direction: column;
+  padding: 2rem;
 }
 
-#options {}
-
-#drag-options {
-  border-radius: 5px;
-  border:1px solid black;
-  min-height: 50px;
-  margin-bottom:10px;
+#takepoll-title {
+  line-height: 2rem;
+  padding-left: 0.5rem;
+  text-align: center;
 }
 
-#poll-submit-button {
-  background-color: #89C1FF;
+#options {
+  @include make-container();
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* #sortable {
+  list-style-type: none;
+} */
+#sortable {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 60%;
+
+}
+#sortable li {
+  margin: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
+  font-size: 1.2em;
+  height: 1.5em;
+  border: 0.2em solid orange;
+}
+
+html>body #sortable li { height: 1.5em; line-height: 1.2em; }
+.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+
+/* .ranked-list-element {
+  margin: 3em;
+}
+ */
+.option-text {
+  font-size: 0.9em;
+}
+
+.option-description {
+  font-size: 0.5em;
+}
+
+
+
+#submit-button {
+  background-color: saturate(lighten($yellow, 11%), 30%);
   border:#89C1FF;
 }
+
+#submit-button:hover {
+  background-color: saturate($orange, 30%);
+}
+
+
