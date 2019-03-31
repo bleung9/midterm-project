@@ -77,10 +77,6 @@ function createPoll(submitForm) {
   });
 }
 
-// createPoll({ admin_link: 'g839001', voter_link: 'assdh', question: 'How are you?', email: 'test@test.com', title: ['hello', 'hi', 'hey'], description: ['testing', "two", "three"]});
-
-
-
 
 module.exports = {
   submitVote: submitVote,
