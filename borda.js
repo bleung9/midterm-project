@@ -32,6 +32,8 @@
 
 function borda(rows) {
   let votes = rows[0];
+  console.log("votes", votes);
+  console.log("votes.length", votes.length);
   let tally = {};
   let text_to_des = {};
   for (i = 0; i < votes.length; i++) {
@@ -45,10 +47,13 @@ function borda(rows) {
       tally[option] += votes[i].rank;
     }
   }
+  console.log("tally", tally);
   let number_of_options = Object.keys(tally).length;
+  console.log("number_of_options", number_of_options);
   for (let vote in tally) {
-    tally[vote] = number_of_options * (number_of_options + 1) - tally[vote];
+    tally[vote] = (number_of_options + 1) * (votes.length / number_of_options)  - tally[vote];
   }
+  console.log("tally", tally);
   let arr = Object.keys(tally).map(function(key) {
     return [key, tally[key]];
   });

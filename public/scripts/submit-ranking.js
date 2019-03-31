@@ -18,21 +18,19 @@ $(document).ready( function() {
       return pair.push(participant_name);
     });*/
 
-
     rankPairs.participant_name = participant_name;
 
     $.ajax({
       type: 'POST',
+      // url: "http://localhost:8080/votes_submitted",
       dataType: 'json',
       data: rankPairs // {key: "BIG STUPID STRING HERE IT IS LOOOK AT HOW STUPID IT IS THIS DUMB STUPID STRING"}
     })
-    .done( function(result) {
-      console.log('success');
+    .done(function() {
       window.location.replace("../thanks");
     })
     .fail( function() {
       console.log('neppers');
     });
-
   });
 });

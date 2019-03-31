@@ -14,7 +14,7 @@ $(document).ready(function() {
 
   $("#add").click(function(event) {
     event.preventDefault();
-    $("#two-buttons").prev().append( `
+    $("#two-buttons").prev().append(`
       <div class="form-group">
         <label for="email">Title:</label>
         <input type="text" class="mandatory" class="form-control" style="border:1px solid black;" placeholder="Enter Title Here" name="title"/>
