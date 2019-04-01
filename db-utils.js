@@ -10,17 +10,17 @@ const knex = require("knex")({
 });
 
 function submitVote(result) {
-  return Promise.all([knex('polls').distinct().select('polls.admin_link').where('polls.participant_link', result.participant_link)]).then(function(admin_link) {
-    console.log("admin link: ", admin_link[0][0]);
-    console.log("result:", result);
-    for (i = 0; i < result.vote_data.ranks.length; i++) {
-      Promise.all([knex('results').insert({
-        admin_link: admin_link[0][0].admin_link,
-        option_id: result.vote_data.optionIDs[i],
-        rank: result.vote_data.ranks[i],
-        participant_name: result.participant_name
-      })]);
-    }
+  return Promise.all([
+    knex('polls').distinct().select('polls.admin_link').where('polls.participant_link', result.participant_link)])
+    .then(function(admin_link) {
+      for (i = 0; i < result.vote_data.ranks.length; i++) {
+        Promise.all([knex('results').insert({
+          admin_link: admin_link[0][0].admin_link,
+          option_id: result.vote_data.optionIDs[i],
+          rank: result.vote_data.ranks[i],
+          participant_name: result.participant_name
+        })]);
+      }
   });
 }
 
@@ -59,7 +59,7 @@ function createPoll(submitForm) {
     poll_question: submitForm.poll_question,
     creator_email: submitForm.creator_email
   });
-  console.log("submitForm: ", submitForm)
+
   let optionsToInsert = submitForm.title.map( (x, index) => ({
     admin_link: submitForm.admin_link,
     option_text: x,
@@ -76,10 +76,6 @@ function createPoll(submitForm) {
     Promise.all(secondaryInserts);
   });
 }
-
-// createPoll({ admin_link: 'g839001', voter_link: 'assdh', question: 'How are you?', email: 'test@test.com', title: ['hello', 'hi', 'hey'], description: ['testing', "two", "three"]});
-
-
 
 
 module.exports = {
