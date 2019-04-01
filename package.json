@@ -25,8 +25,10 @@
     "mailgun-js": "^0.22.0",
     "mongodb": "^2.2.36",
     "morgan": "^1.7.0",
+    "node-sass": "^4.11.0",
     "node-sass-middleware": "^0.9.8",
     "pg": "^6.0.2",
+    "sass": "^1.17.3",
     "tsscmp": "^1.0.6"
   },
   "devDependencies": {

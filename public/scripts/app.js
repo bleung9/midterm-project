@@ -33,10 +33,12 @@ $(document).ready(function() {
     for (i = 0; i < arr.length; i++) {
       console.log($(arr[i]).val());
       if ($(arr[i]).val() === "") {
-        alert("Please ensure all mandatory fields have been filled in!");
+        $("#submit-form").append('<h6>You have empty mandatory fields!  Fill them in to uncross Pikachu&#39s arms!</h6><img src="https://media1.tenor.com/images/3457a6c12bf62786b765b92dda50c5e5/tenor.gif">');
+        // alert("Please ensure all mandatory fields have been filled in!");
         return;
       }
     }
+
     let data = $("#submit-form").serialize();
     $.post("/poll_submitted", data).then(function(result) {
       console.log(result);

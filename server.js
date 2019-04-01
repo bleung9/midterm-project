@@ -98,7 +98,7 @@ app.get("/a/:adminURL", function(req, res) {
   let adminURL = String(req.params.adminURL);
   dbUtils.validURL(adminURL, "a").then(function(queryResult) {
     if (!queryResult[0][0]) {
-      res.status(400).send("not a valid admin URL!");
+      res.status(400).send('<h3>Not a valid admin URL!  You made Pikachu sad (Misty eyed?) T_T</h3><img src="https://media1.tenor.com/images/615d10ede789767d27d89855e41e3012/tenor.gif">');
       return;
     }
     else {
@@ -132,7 +132,7 @@ app.get("/u/:participant_url", function(req, res) {
   let partURL = String(req.params.participant_url);
   dbUtils.validURL(partURL, "p").then(function(queryResult) {
     if (!queryResult[0][0]) {
-      res.status(400).send("not a valid participant URL!");
+      res.status(400).send('<h3>Not a valid participant URL!  How dare you make Pikachu angry!!!!</h3><img src="https://memegenerator.net/img/images/15262599/angry-pikachu.jpg">');
       return;
     }
     else {
