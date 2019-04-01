@@ -16,8 +16,8 @@ $(document).ready(function() {
     event.preventDefault();
     $("#two-buttons").prev().append(`
       <div class="form-group">
-        <label for="email">Title:</label>
-        <input type="text" class="mandatory" class="form-control"  placeholder="Enter Title Here" name="title"/>
+        <label for="email">Option:</label>
+        <input type="text" class="mandatory" class="form-control"  placeholder="What are the options?" name="title"/>
       </div>
       <div class="form-group">
         <label for="password">Description (Optional):</label>
