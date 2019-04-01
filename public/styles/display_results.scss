@@ -1,0 +1,55 @@
+@import "../vendor/bootstrap/scss/bootstrap";
+
+.content-container {
+  @include make-container();
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+#homepage-title {
+  line-height: 2rem;
+  padding-left: 0.5rem;
+  text-align: center;
+}
+
+.welcome-message {
+  min-width: 20rem;
+  width: 60%;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.result-element {
+  border: 0.3em solid yellow;
+  margin: 2em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: .8;
+  text-align: center;
+}
+
+.rank-field {
+  display: none;
+}
+
+.result-element.options-field {
+  font-size: 1em;
+  margin: 0.2em;
+}
+
+.result-element.options-description {
+  font-size: 0.8em;
+  margin: 0.2em;
+}
+
+.result-element.winner {
+  border: 0.6em solid orange;
+  box-shadow: 0 0 0 1em saturate(lighten($yellow, 15%), 20%);
+  border-radius: 4em;
+  opacity: 1;
+}
