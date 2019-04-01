@@ -32,26 +32,20 @@
       <h3>Results:</h3>
       <% borda_results.forEach(function(x) { %>
         <% if (!!x[4]) { %>
-
-
-  <div class="result-element winner">
-        <div class="rank-field">rank: <%= x[1] %> </div>
-        <div class="options-field"><%= x[2] %> </div>
-        <div class="options-description"><%= x[3] %> </div>
-      </div>
-<% } else { %>
-
-
-            <div class="result-element">
-        <div class="rank-field">rank: <%= x[1] %> </div>
-        <div class="options-field"><%= x[2] %> </div>
-        <div class="options-description"><%= x[3] %> </div>
-      </div>
-<% } %>
-    <% }) %>
-
-
+          <div class="result-element winner">
+            <div class="rank-field">rank: <%= x[1] %> </div>
+            <div class="options-field"><%= x[2] %> </div>
+            <div class="options-description"><%= x[3] %> </div>
+          </div>
+        <% } else { %>
+          <div class="result-element">
+            <div class="rank-field">rank: <%= x[1] %> </div>
+            <div class="options-field"><%= x[2] %> </div>
+            <div class="options-description"><%= x[3] %> </div>
+          </div>
+        <% } %>
+      <% }) %>
+      <img src="https://media1.tenor.com/images/8b054a6715624dfc8090995bfe3da6d6/tenor.gif">
     </section>
-
   </body>
 </html>
