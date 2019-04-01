@@ -16,7 +16,7 @@ const knexLogger  = require('knex-logger');
 const random_url_gen = require('./public/scripts/random_url_gen');
 
 const pollRoutes = require("./routes/polls");
-const mailgun = require("./new-mailgun");
+const mailgun = require('./new-mailgun.js')
 const dbUtils = require("./db-utils");
 const borda = require("./borda");
 
