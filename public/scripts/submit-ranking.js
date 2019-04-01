@@ -20,6 +20,8 @@ $(document).ready( function() {
 
     rankPairs.participant_name = participant_name;
 
+    $('#options').append('<h6>You have voted successfully!  Look at all these happy Pikachus!</h6><img src="https://media1.tenor.com/images/da5e861c72c6ebd3a8e0979d2b79a6e0/tenor.gif">');
+
     $.ajax({
       type: 'POST',
       // url: "http://localhost:8080/votes_submitted",
