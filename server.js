@@ -16,11 +16,7 @@ const knexLogger  = require('knex-logger');
 const random_url_gen = require('./public/scripts/random_url_gen');
 
 const pollRoutes = require("./routes/polls");
-<<<<<<< HEAD
 // const mailgun = require('./new-mailgun.js');
-=======
-// const mailgun = require('./new-mailgun.js')
->>>>>>> 13c28cb0d9623980195b47f43e128ab9ba140d62
 const dbUtils = require("./db-utils");
 const borda = require("./borda");
 
